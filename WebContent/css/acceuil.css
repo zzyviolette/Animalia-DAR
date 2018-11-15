@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+.page-logo{
+
+	background-image: url("../img/animalialogo.png");
+	background-repeat: no-repeat;
+	background-size:100%;
+}
+.page-sidebar-menu  .active>a {
+    background-color: rgb(53,118,190) !important;
+}
