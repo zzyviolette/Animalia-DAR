@@ -25,12 +25,12 @@ public class HibernateUtil {
 //               jdbcUrlSettings.put("hibernate.connection.url", System.getenv("JDBC_DATABASE_URL"));
 //             }
 
-            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().
-                configure("hibernate.cfg.xml").
-//                 applySettings(jdbcUrlSettings).
-                build();
-          // sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
-             sessionFactory = new Configuration().buildSessionFactory(registry);
+            // StandardServiceRegistry registry = new StandardServiceRegistryBuilder().
+            //     configure("hibernate.cfg.xml").
+            //     applySettings(jdbcUrlSettings).
+            //     build();
+           sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+          //   sessionFactory = new Configuration().buildSessionFactory(registry);
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
@@ -41,3 +41,4 @@ public class HibernateUtil {
         return sessionFactory.openSession();
     }
 }
+
