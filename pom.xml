@@ -63,7 +63,12 @@
 								<include>**/*.jar</include>
 							</includes>
 						</resource>
-
+	<resource>
+							<directory>${project.basedir}/src</directory>
+							<includes>
+								<include>**/*.xml</include>
+							</includes>
+						</resource>
 					</webResources>
 				</configuration>
 				<version>2.1.1</version>
