@@ -4,8 +4,7 @@
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://ec2-79-125-124-30.eu-west-1.compute.amazonaws.com
-:5432/dekuvamuu1cd5u</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://ec2-79-125-124-30.eu-west-1.compute.amazonaws.com:5432/dekuvamuu1cd5u</property>
 		<property name="hibernate.connection.username">xsolkqpabhyueq</property>
 		<property name="hibernate.connection.password">38663f8d82d3d2a0ad6dfed93d16423d621bcd16d480194c82c25fc608456784</property>
 		<property name="show_sql">true</property>

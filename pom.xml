@@ -64,7 +64,7 @@
 							</includes>
 						</resource>
 	<resource>
-							<directory>${project.basedir}/src</directory>
+							<directory>src/main/resources</directory>
 							<includes>
 								<include>**/*.xml</include>
 							</includes>
