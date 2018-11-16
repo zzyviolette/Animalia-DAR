@@ -186,7 +186,7 @@
 					<h3 class="section-title">Contactez Nous <h3>
 				</center>
 				<p class="section-description">Pour nous contacter, pour vous en donner plus
-informations, répondez à toutes vos questions et créez une
+informations, rÃ©pondez Ã  toutes vos questions et crÃ©ez une
 solution efficace pour vos besoins </p>
 			</div>
 		</div>
@@ -199,7 +199,7 @@ solution efficace pour vos besoins </p>
 						<div>
 							<i class="fa fa-map-marker"></i>
 							<p>
-								4 Place Jussieu<br>Sorbonne Université, 75005
+								4 Place Jussieu<br>Sorbonne UniversitÃ©, 75005
 							</p>
 						</div>
 
@@ -231,19 +231,19 @@ solution efficace pour vos besoins </p>
 						<form action="mail" method="post" role="form" class="contactForm">
 							<div class="form-group">
 								<input type="text" name="name" class="form-control" id="name"
-									placeholder="Your Name" data-rule="minlen:4"
+									placeholder="Votre Nom" data-rule="minlen:4"
 									data-msg="Please enter at least 4 chars" />
 								<div class="validation"></div>
 							</div>
 							<div class="form-group">
 								<input type="email" class="form-control" name="email" id="email"
-									placeholder="Your Email" data-rule="email"
-									data-msg="Please enter a valid email" />
+									placeholder="Votre Email" data-rule="email"
+									data-msg="Entrez un email valide !" />
 								<div class="validation"></div>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="subject"
-									id="subject" placeholder="Subject" data-rule="minlen:4"
+									id="subject" placeholder="Object" data-rule="minlen:4"
 									data-msg="Please enter at least 8 chars of subject" />
 								<div class="validation"></div>
 							</div>
