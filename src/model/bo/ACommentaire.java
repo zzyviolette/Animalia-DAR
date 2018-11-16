@@ -20,7 +20,7 @@ public class ACommentaire {
 	int id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "annonce_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "annonce_id", referencedColumnName = "id")
 	private Annonce annonce_id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
