@@ -89,7 +89,8 @@ public class EvenementServlet extends HttpServlet {
 
 			int e = Integer.parseInt(request.getParameter("id"));
 			event.notIntrested(e, email);
-			response.sendRedirect(request.getHeader("referer"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("events.jsp");
+                        dispatcher.forward(request, response);
 			break;
 			
 		}
@@ -123,7 +124,8 @@ public class EvenementServlet extends HttpServlet {
 			
 			int id = Integer.parseInt(request.getParameter("id"));
 			event.deleteEvent(id);
-			response.sendRedirect(request.getHeader("referer"));			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+                        dispatcher.forward(request, response);		
 			break;
 
 		}
@@ -132,7 +134,7 @@ public class EvenementServlet extends HttpServlet {
 
 			int e = Integer.parseInt(request.getParameter("id"));
 			event.intrested(e, email);
-	                RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+	                RequestDispatcher dispatcher = request.getRequestDispatcher("events.jsp");
 			dispatcher.forward(request, response);
 
 			break;
