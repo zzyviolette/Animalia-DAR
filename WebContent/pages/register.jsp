@@ -50,7 +50,7 @@
 				<div class="wrap-input100 rs1-wrap-input100 validate-input"
 					data-validate="Name is required">
 					<span class="label-input100">Nom *</span> <input class="input100"
-						type="text" name="name" placeholder="Enter your name">
+						type="text" name="name" placeholder="Entrez votre nom">
 				</div>
 
 
@@ -58,18 +58,18 @@
 					data-validate="Valid email is required: ex@abc.xyz">
 					<span class="label-input100">Email *</span> <input type="email"
 						name="email" id="inputEmail" class="input100"
-						placeholder="Enter your email">
+						placeholder="Entrez votre email">
 				</div>
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input">
 					<span class="label-input100">Occupation *</span> <input
 						class="input100" type="text" name="occupation"
-						placeholder="Enter your Occupation">
+						placeholder="Entrez votre occupation">
 				</div>
 				<div class="wrap-input100 rs1-wrap-input100 validate-input">
 					<span class="label-input100">Interest*</span> <input
 						class="input100" type="text" name="interest"
-						placeholder="Enter your interest">
+						placeholder="Entrez votre interêt">
 				</div>
 				<div class="wrap-input100 rs1-wrap-input100 validate-input">
 					<span class="label-input100">Password *</span> <input
