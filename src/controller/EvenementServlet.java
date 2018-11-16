@@ -132,7 +132,9 @@ public class EvenementServlet extends HttpServlet {
 
 			int e = Integer.parseInt(request.getParameter("id"));
 			event.intrested(e, email);
-			response.sendRedirect(request.getHeader("referer"));
+	                RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+			dispatcher.forward(request, response);
+
 			break;
 			
 		}
