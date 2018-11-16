@@ -92,7 +92,7 @@
 										<a href="#" data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Les êtres qui ne deçoivent jamais</a>
+										<a href="single-post.html">Les Ãªtres qui ne deÃ§oivent jamais</a>
 									</h2>
 								</div>
 							</div>
@@ -136,7 +136,7 @@
 						<div class="col-12">
 							<div class="group">
 								<select id="annonce_categorie" name="categorie" >
-									<option>-selectionner une catégorie-</option>
+									<option>-selectionner une catÃ©gorie-</option>
 									<option value="chercher animal">chercher un animal</option>
 									<option value="proposer animal">proposer un animal</option>
 									<option value="chercher garde animaux">chercher garde
@@ -218,24 +218,24 @@
 								<form id="searchForm" class="search-form">
 									<input type="hidden" name="action" value="search_annonce">
 
-									<input type="search" name="search" placeholder="Search">
+									<input type="search" name="search" placeholder="Rechercher">
 
 								</form>
-								<button style ='border:none;color:white;margin:10px;background-color:black;padding:5px;'onclick="rechercher()">search</button>
+								<button style ='border:none;color:white;margin:10px;background-color:black;padding:5px;'onclick="rechercher()">Rechercher</button>
 								
 							</div>
 
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Advertisement</h5>
+								<h5 class="title">Publicit&eacute</h5>
 								<a onclick='advertissement()'><img src="../img/acce.gif" alt=""></a>
 							</div>
 							
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Latest Posts</h5>
+								<h5 class="title">R&eacutecentes Annonces</h5>
 
 								<div class="widget-content" id="latest_posts">
 
@@ -267,7 +267,7 @@
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Catégories</h5>
+								<h5 class="title">Cat&eacutegories</h5>
 								<div class="widget-content">
 									<ul class="tags">
 
