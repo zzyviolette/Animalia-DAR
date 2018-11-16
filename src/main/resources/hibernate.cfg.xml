@@ -7,17 +7,11 @@
 		<property name="hibernate.connection.url">jdbc:mysql://eu-cdbr-west-02.cleardb.net:3306/heroku_187058818f98432</property>
 		<property name="hibernate.connection.username">b2ba8d6135adc0</property>
 		<property name="hibernate.connection.password">86c3dadf</property>
+		<property name="connection.autoReconnect">true</property> 
+        <property name="connection.autoReconnectForPools">true</property> 
+        <property name="connection.is-connection-validation-required">true</property> 
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">update</property>
-		<property name="connection.provider_class">  
-        org.hibernate.connection.C3P0ConnectionProvider  
-</property>  
-<property name="hibernate.c3p0.min_size">5</property>  
-<property name="hibernate.c3p0.max_size">10</property>  
-<property name="hibernate.c3p0.max_statements">50</property>  
-<property name="hibernate.c3p0.timeout">36000000</property>  
-<property name="hibernate.c3p0.idle_test_period">120</property>  
-<property name="hibernate.c3p0.acquire_increment">2</property>  
 		<mapping class="model.bo.Utilisateur" />
 		<mapping class="model.bo.Comment" />
 		<mapping class="model.bo.Annonce" />
