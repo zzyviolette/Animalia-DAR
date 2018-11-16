@@ -160,10 +160,10 @@
 								<form id="searchForm" class="search-form">
 									<input type="hidden" name="action" value="search_annonce">
 
-									<input type="search" name="search" placeholder="Search">
+									<input type="search" name="search" placeholder="Rechercher">
 
 								</form>
-								<button class='button' onclick="rechercher()">search</button>
+								<button class='button' onclick="rechercher()">Rechercher</button>
 
 							</div>
 
