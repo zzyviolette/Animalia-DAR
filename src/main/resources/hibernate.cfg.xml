@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
@@ -7,6 +7,34 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://ec2-79-125-124-30.eu-west-1.compute.amazonaws.com:5432/dekuvamuu1cd5u</property>
 		<property name="hibernate.connection.username">xsolkqpabhyueq</property>
 		<property name="hibernate.connection.password">38663f8d82d3d2a0ad6dfed93d16423d621bcd16d480194c82c25fc608456784</property>
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">create</property>
+		<mapping class="model.bo.Utilisateur" />
+		<mapping class="model.bo.Comment" />
+		<mapping class="model.bo.Annonce" />
+		<mapping class="model.bo.Evenement" />
+		<mapping class="model.bo.Message" />
+		<mapping class="model.bo.ACommentaire" />
+		<mapping class="model.bo.Photo" />
+		<mapping class="model.bo.Avatar" />
+		<mapping class="model.bo.PhotoEvent" />
+		<mapping class="model.bo.Notification" />
+
+
+	</session-factory>
+</hibernate-configuration>
+ -->
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://eu-cdbr-west-02.cleardb.net:3306/heroku_187058818f98432</property>
+		<property name="hibernate.connection.username">b2ba8d6135adc0</property>
+		<property name="hibernate.connection.password">86c3dadf</property>
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create</property>
 		<mapping class="model.bo.Utilisateur" />
