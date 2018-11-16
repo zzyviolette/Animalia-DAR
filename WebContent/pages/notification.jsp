@@ -104,7 +104,7 @@
 										<a href="#" data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Les êtres qui ne deçoivent
+										<a href="single-post.html">Les Ãªtres qui ne deÃ§oivent
 											jamais</a>
 									</h2>
 								</div>
@@ -174,17 +174,17 @@
 								<form id="searchForm" class="search-form">
 									<input type="hidden" name="action" value="search_annonce">
 
-									<input type="search" name="search" placeholder="Search">
+									<input type="search" name="search" placeholder="Rechercher">
 
 								</form>
-								<button class='button' onclick="rechercher()">search</button>
+								<button class='button' onclick="rechercher()">Rechercher</button>
 
 							</div>
 
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Advertisement</h5>
+								<h5 class="title">Publicit&eacute</h5>
 								<a onclick="advertissement()"><img src="../img/acce.gif" alt=""></a>
 							</div>
 
@@ -192,7 +192,7 @@
 							
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Catégories</h5>
+								<h5 class="title">Cat&eacutegories</h5>
 								<div class="widget-content">
 									<ul class="tags">
 
