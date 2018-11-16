@@ -110,12 +110,16 @@ public class AnnonceDao {
 		/**********************supprimer une annonce ***************************/
 		
 		Session session = HibernateUtil.openSession();
+		
 		Annonce a = (Annonce) session.createQuery("from Annonce as a where a.id = :annonce")
 				.setParameter("annonce", id).uniqueResult();
+		
 		List<ACommentaire> comments = a.getComments();
+		CommentaireDao c=new CommentaireDao();
 		int i;
 		for (i = 0; i < comments.size(); i++) {
-			comments.remove(i);
+			//comments.remove(i);
+			c.delete_commentaire(comments.get(i).getId());
 		}
 		Query q = session.createQuery("delete from Annonce as p where p.id= :id ");
 		q.setParameter("id", id);
