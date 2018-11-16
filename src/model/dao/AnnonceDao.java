@@ -215,7 +215,7 @@ public class AnnonceDao {
 public List<Object> notification(String email){
 		
 		Session session = HibernateUtil.openSession();
-				Query q = session.createQuery("from Utilisateur user JOIN user.annonces an LEFT JOIN an.comments com where user.email=:email and com.state= 0  order by an.date desc")
+				Query q = session.createQuery("from Utilisateur user JOIN user.annonces an LEFT JOIN an.comments com where user.email=:email and com.state = 0 group by an.id order by an.date desc")
 				.setParameter("email", email);
 			
 		
