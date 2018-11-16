@@ -56,7 +56,7 @@
 		<div class="page-header-inner" >
 			<!-- BEGIN LOGO -->
 			<div class="page-logo">
-				<a href="index.html"> <img style="margin:0; padding:0;width:200px;height: 46px "
+				 <img style="margin:0; padding:0;width:200px;height: 46px "
 					src="../img/logo.png" alt="logo"
 					class="logo-default" />
 				</a>
