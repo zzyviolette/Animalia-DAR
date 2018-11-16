@@ -89,7 +89,7 @@
 										<a href="#" data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Les êtres qui ne deçoivent
+										<a href="single-post.html">Les Ãªtres qui ne deÃ§oivent
 											jamais</a>
 									</h2>
 								</div>
@@ -169,37 +169,16 @@
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Publicité</h5>
+								<h5 class="title">Publicit&eacute</h5>
 								<a onclick="advertissement()"><img src="../img/acce.gif" alt=""></a>
 							</div>
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Les annonces récentes</h5>
+								<h5 class="title">R&eacutecentes Annonces</h5>
 
 								<div class="widget-content" id="latest_posts">
 
-									<!-- Single Blog Post -->
-									<div
-										class="single-blog-post d-flex align-items-center widget-post">
-										<!-- Post Thumbnail -->
-										<div class="post-thumbnail">
-											<img src="../img/blog-img/lp1.jpg" alt="">
-										</div>
-										<!-- Post Content -->
-										<div class="post-content">
-											<a href="#" class="post-tag">Lifestyle</a>
-											<h4>
-												<a href="#" class="post-headline">Party people in the
-													house</a>
-											</h4>
-											<div class="post-meta">
-												<p>
-													<a href="#">12 March</a>
-												</p>
-											</div>
-										</div>
-									</div>
 
 
 								</div>
@@ -207,7 +186,7 @@
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Catégories</h5>
+								<h5 class="title">CatÃ©gories</h5>
 								<div class="widget-content">
 									<ul class="tags">
 
