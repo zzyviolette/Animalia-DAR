@@ -186,7 +186,7 @@
 					<h3 class="section-title">Contactez Nous <h3>
 				</center>
 				<p class="section-description">Pour nous contacter, pour vous en donner plus
-informations, répondez à toutes vos questions et créez une
+informations, r&eacutepondez &aacute toutes vos questions et cr&eacuteez une
 solution efficace pour vos besoins </p>
 			</div>
 		</div>
@@ -199,7 +199,7 @@ solution efficace pour vos besoins </p>
 						<div>
 							<i class="fa fa-map-marker"></i>
 							<p>
-								4 Place Jussieu<br>Sorbonne Université, 75005
+								4 Place Jussieu<br>Sorbonne Universit&eacute, 75005
 							</p>
 						</div>
 
@@ -208,7 +208,7 @@ solution efficace pour vos besoins </p>
 							<p>
 								benaddisoukaina@gmail.com 
 								<br> louahdiasma@gmail.com 
-								<br> Ziyizhou@gmail.com
+								<br> ziyizhou@gmail.com
 							</p>
 						</div>
 
