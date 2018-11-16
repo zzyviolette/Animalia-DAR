@@ -40,7 +40,7 @@ public class Annonce {
 	@JoinColumn(name = "post_photo", referencedColumnName = "id")
 	private Photo photo;
 
-	@OneToMany(mappedBy = "annonce_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "annonce_id", cascade = CascadeType.ALL)
 	private List<ACommentaire> comments;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
