@@ -8,7 +8,7 @@
 		<property name="hibernate.connection.username">b2ba8d6135adc0</property>
 		<property name="hibernate.connection.password">86c3dadf</property>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 		<mapping class="model.bo.Utilisateur" />
 		<mapping class="model.bo.Comment" />
 		<mapping class="model.bo.Annonce" />
