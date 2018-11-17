@@ -179,7 +179,7 @@ $(document).ready(function() {
 				
 			});
 			$("#li_aboutUs").click(function() {
-						obj.src = "aboutUs.jsp";
+						obj.src = "aboutUs.html";
 						menu('li_aboutUs');
 
 					});
