@@ -169,4 +169,29 @@ public class Utilisateur {
 		this.avatar = avatar;
 	}
 
+	public String toString() {
+		String result = "";
+		result = "{";
+		result = result + "\"id\":" + id + ",";
+		result = result + "\"name\":" + name + ",";
+		result = result + "\"email\":" + email + ",";
+		
+		result = result + "\"email\":" + email + ",";
+		result = result + "\"email\":" + email + ",";
+		result = result + "\"email\":" + email + ",";
+		result = result + "\"email\":" + email + ",";
+		result = result + "\"email\":" + email + ",";
+		
+		return about.toString();
+	}
+	
+/*
+
+	private String password;
+	private String numberphone;
+	private String about;
+	private String Occupation;
+	private String interest;	
+ */
+
 }

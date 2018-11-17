@@ -15,7 +15,15 @@ $(document).ready(function() {
 
 			
 			document.getElementById("acceuilusername").innerHTML = user.name ? user.name : "";
-			document.getElementById("acceuilimgprofile").src = "data:image/png;base64,"+user.avatar;
+			if(user.avatar){
+				if( document.getElementById("profileuserpic") ) document.getElementById("profileuserpic").src = "data:image/png;base64,"+user.avatar;
+				if( document.getElementById("acceuilimgprofile") ) document.getElementById("acceuilimgprofile").src = "data:image/png;base64,"+user.avatar;
+				if( parent.document.getElementById("acceuilimgprofile") ) parent.document.getElementById("acceuilimgprofile").src = "data:image/png;base64,"+user.avatar;
+			}else{
+				if( document.getElementById("profileuserpic") ) document.getElementById("profileuserpic").src = "../img/logo.png";
+				if( document.getElementById("acceuilimgprofile") ) document.getElementById("acceuilimgprofile").src = "../img/logo.png";
+				if( parent.document.getElementById("acceuilimgprofile") ) parent.document.getElementById("acceuilimgprofile").src = "../img/logo.png";
+			}
 			
 		}
 	});
@@ -51,7 +59,7 @@ $(document).ready(function() {
 						"dataType" : "text",
 						"success" : function(data) {
 							var url = window.location.host;
-							var arr = "http://" +url+"/Projet_dar/pages/login.jsp";
+							var arr = "http://" +url+"/animalia/pages/login.jsp";
 							
 							window.location.href = arr;
 						}

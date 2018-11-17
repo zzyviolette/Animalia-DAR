@@ -63,7 +63,12 @@
 								<include>**/*.jar</include>
 							</includes>
 						</resource>
-
+	<resource>
+							<directory>src/main/resources</directory>
+							<includes>
+								<include>**/*.xml</include>
+							</includes>
+						</resource>
 					</webResources>
 				</configuration>
 				<version>2.1.1</version>
@@ -76,6 +81,16 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.5.Final</version>
+		</dependency>
+		<dependency>
+ <groupId>c3p0</groupId>
+ <artifactId>c3p0</artifactId>
+ <version>0.9.1.2</version> 
+</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1102-jdbc4</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

@@ -51,6 +51,7 @@
 	type="text/css" />	
 </head>
 <body class="page-header-fixed page-quick-sidebar-over-content " >
+
 	<div class="page-header navbar navbar-fixed-top">
 		<!-- BEGIN HEADER INNER -->
 		<div class="page-header-inner" >
@@ -225,7 +226,7 @@
 		type="text/javascript"></script>
 	<script src="../assets/admin/pages/scripts/contact-us.js"></script>
 	<script src="../js/acceuil.js"></script>
-<script src="../js/plugins/sweetalert2.all.min.js" type="text/javascript"></script>
+	<script src="../js/plugins/sweetalert2.all.min.js" type="text/javascript"></script>
 
 </body>
 </html>

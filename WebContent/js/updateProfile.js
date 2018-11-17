@@ -46,6 +46,7 @@ $("#updateProfile").click(function() {
 			},
 			"dataType" : "text",
 			"success" : function(data) {
+				document.getElementById("usernametitle").innerHTML = $("#userName").val() ? $("#userName").val() : "";
 				parent.document.getElementById("acceuilusername").innerHTML = $("#userName").val() ? $("#userName").val() : "";
 				swal({
 					  position: 'top-end',
@@ -54,7 +55,7 @@ $("#updateProfile").click(function() {
 					  showConfirmButton: false,
 					  timer: 2000
 					});
-				parent.check_status();
+				//parent.check_status();
 			}
 		});	
 });
