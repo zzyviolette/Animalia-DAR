@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 					});
 			$("#li_accessoires").click(function() {
-					obj.src = "accessoires.jsp";
+					obj.src = "accessoires.html";
 					menu('li_accessoires');
 					});
 			$("#li_comment").click(function() {
@@ -163,7 +163,7 @@ $(document).ready(function() {
 					});
 			$("#li_messages").click(function() {
 				$("#msg_count").text(0);
-						obj.src = "message.jsp";
+						obj.src = "message.html";
 						menu('li_messages');
 					});
 			$("#li_notifications").click(function() {
