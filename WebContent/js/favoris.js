@@ -449,7 +449,7 @@ function contacter(name,photo,id){
 /********************redisrection vers accessoires***********************/
 function advertissement(){
 			var obj = window.parent.document.getElementById("iframe");
-			obj.src="accessoires.jsp";
+			obj.src="accessoires.html";
 			
 		}
 
