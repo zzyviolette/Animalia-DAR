@@ -414,7 +414,7 @@ function valider(){
 /***************************rediriger vers accessoires*****************************/
 function advertissement(){
 	var obj = window.parent.document.getElementById("iframe");
-	obj.src="accessoires.jsp";
+	obj.src="accessoires.html";
 	
 }
 function getId(callback){
