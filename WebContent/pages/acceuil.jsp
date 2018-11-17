@@ -138,7 +138,7 @@
 						<ul class="sub-menu">
 							
 							<li id="li_allevents"><a> <i class="fa fa-star"></i>
-									Tous les événementstest
+									Tous les événements
 							</a></li>
 							<li id="li_myevents"><a > <i
 									class="fa fa-user"></i> Mes événements
