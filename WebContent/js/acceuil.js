@@ -59,7 +59,7 @@ $(document).ready(function() {
 						"dataType" : "text",
 						"success" : function(data) {
 							var url = window.location.host;
-							var arr = "http://" +url+"/animalia/pages/login.jsp";
+							var arr = "http://" +url+"/pages/login.jsp";
 							
 							window.location.href = arr;
 						}
