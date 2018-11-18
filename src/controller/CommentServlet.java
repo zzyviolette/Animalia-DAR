@@ -89,7 +89,7 @@ public class CommentServlet extends HttpServlet {
 				
 	            //Envoie de la reponse
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/tellus.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/tellus.html");
 				dispatcher.forward(request, response);
 			}
 		}
