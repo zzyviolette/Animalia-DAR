@@ -184,7 +184,7 @@ $(document).ready(function() {
 
 					});
 			$("#li_updateprofile").click(function() {
-				obj.src = "updateprofile.jsp";
+				obj.src = "updateprofile.html";
 				menu('li_updateprofile');
 			});
 
