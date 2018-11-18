@@ -240,26 +240,7 @@
 								<div class="widget-content" id="latest_posts">
 
 									<!-- Single Blog Post -->
-									<div
-										class="single-blog-post d-flex align-items-center widget-post">
-										<!-- Post Thumbnail -->
-										<div class="post-thumbnail">
-											<img src="../img/blog-img/lp1.jpg" alt="">
-										</div>
-										<!-- Post Content -->
-										<div class="post-content">
-											<a href="#" class="post-tag">Lifestyle</a>
-											<h4>
-												<a href="#" class="post-headline">Party people in the
-													house</a>
-											</h4>
-											<div class="post-meta">
-												<p>
-													<a href="#">12 March</a>
-												</p>
-											</div>
-										</div>
-									</div>
+									
 
 
 								</div>
