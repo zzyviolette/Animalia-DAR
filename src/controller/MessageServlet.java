@@ -30,11 +30,15 @@ import model.bo.Utilisateur;
 import model.dao.MessageDao;
 import model.dao.UtilisateurDao;
 
+//@WebServlet("/MessageServlet")
 public class MessageServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	MessageDao messageDao;
 
+	/**
+	 * Default constructor.
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -68,22 +72,6 @@ public class MessageServlet extends HttpServlet {
 			break;
 
 		}
-		case "contact": {
-
-			String content = request.getParameter("content");
-			HttpSession session = request.getSession();
-			Utilisateur user = (Utilisateur)session.getAttribute("currentUser");  
-		    int user_id = user.getId();
-		    System.out.println(user.getId());
-		    System.out.println("*******************");
-		     
-			String destination_id = request.getParameter("contact_id");
-			System.out.println("add_msg servlet" + content);
-			messageDao.addMessage(content, user_id, Integer.parseInt(destination_id));
-			response.sendRedirect(request.getHeader("referer"));
-			break;
-
-		}
 		// delete a message according to id
 		case "delete": {
 
@@ -95,7 +83,22 @@ public class MessageServlet extends HttpServlet {
 			break;
 
 		}
-		// show send messages for the login user
+		// show all messages for the login user(send and receive)
+		case "display_all": {
+
+			response.setContentType("application/json;charset=UTF-8");
+			HttpSession session = request.getSession();
+			Utilisateur user = (Utilisateur)session.getAttribute("currentUser");  
+		    int user_id = user.getId();
+		    System.out.println(user.getId());
+		    System.out.println("*******************");
+		     
+			messageDao.updateMessageState(user_id);
+			PrintWriter out = response.getWriter();
+			out.println(getAllMessages(user_id).toString());
+			break;
+
+		}
 		case "display_send":{
 			System.out.println("send message");
 			response.setContentType("application/json;charset=UTF-8");
@@ -110,7 +113,6 @@ public class MessageServlet extends HttpServlet {
 			out.println(getSendMessages(user_id).toString());
 			break;		
 		}
-		//show receive messages for the login user
 		case "display_receive":{
 			System.out.println("receive message");
 			response.setContentType("application/json;charset=UTF-8");
@@ -123,6 +125,20 @@ public class MessageServlet extends HttpServlet {
 			messageDao.updateMessageState(user_id);
 			PrintWriter out = response.getWriter();
 			out.println(getReceiveMessages(user_id).toString());
+			break;	
+		}
+		case "newMessages":{
+			System.out.println("new message");
+			response.setContentType("application/json;charset=UTF-8");
+			HttpSession session = request.getSession();
+			Utilisateur user = (Utilisateur)session.getAttribute("currentUser");  
+		    int user_id = user.getId();
+		    System.out.println(user.getId());
+		    System.out.println("*******************");
+		     
+			messageDao.updateMessageState(user_id);
+			PrintWriter out = response.getWriter();
+			out.println(getNewMessages(user_id).toString());
 			break;	
 		}
 		// get the id of user_departure for reply this user
@@ -175,6 +191,7 @@ public class MessageServlet extends HttpServlet {
 			json.put("id_user_departure", userDepartNames.get(i));
 		}
 
+//		String jsonStr = jsonReceiveArray.toString();
 		return jsonReceiveArray;
 
 	}
@@ -199,6 +216,8 @@ public class MessageServlet extends HttpServlet {
 			json.put("id_user_departure", userDepartNames.get(i));
 		}
 
+//		String jsonStr = jsonReceiveArray.toString();
+		System.out.println(jsonReceiveArray.toString());
 		return jsonReceiveArray;
 
 	}
@@ -221,10 +240,55 @@ public class MessageServlet extends HttpServlet {
 			json.put("date", date.substring(0, date.length()-2));
 		}
 
+//		String jsonStr = jsonSendArray.toString();
 		return jsonSendArray;
 
 	}
 
-	
+	// convert data(list of messages) to json
+	public JSONArray getAllMessages(int id) {
+//
+//		List<Message> receive_messages = messageDao.getAllMessagesByDestinationId(id);
+//		List<String> userDepartNames = new ArrayList<String>();
+//		UtilisateurDao utilisateurDao = new UtilisateurDao();
+//		for (Message message : receive_messages) {
+//			userDepartNames.add(utilisateurDao.getNameByUserId(message.getId_user_departure()));
+//		}
+//
+//		JSONArray jsonReceiveArray = new JSONArray(receive_messages);
+//		for (int i = 0; i < jsonReceiveArray.length(); i++) {
+//			JSONObject json = new JSONObject();
+//			json = jsonReceiveArray.getJSONObject(i);
+//			json.put("id_user_departure", userDepartNames.get(i));
+//		}
+//
+//		List<Message> send_messages = messageDao.getAllMessagesByDepartureId(id);
+//		List<String> userDestNames = new ArrayList<String>();
+//		for (Message message : send_messages) {
+//			userDestNames.add(utilisateurDao.getNameByUserId(message.getId_user_destination()));
+//		}
+//
+//		JSONArray jsonSendArray = new JSONArray(send_messages);
+//		for (int i = 0; i < jsonSendArray.length(); i++) {
+//			JSONObject json = new JSONObject();
+//			json = jsonSendArray.getJSONObject(i);
+//			json.put("id_user_destination", userDestNames.get(i));
+//		}
+
+		JSONObject typeSend = new JSONObject();
+		typeSend.put("type", "send");
+		typeSend.put("list", getSendMessages(id));
+		JSONObject typeReceive = new JSONObject();
+		typeReceive.put("type", "receive");
+		typeReceive.put("list", getReceiveMessages(id));
+
+		JSONArray jsonArray = new JSONArray();
+		jsonArray.put(0, typeSend);
+		jsonArray.put(1, typeReceive);
+
+//		String jsonStr = jsonArray.toString();
+		return jsonArray;
+
+	}
 
 }

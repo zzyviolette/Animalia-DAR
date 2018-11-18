@@ -18,7 +18,7 @@ public class MailService {
 				String subject, String content) {
 
 			final String username = "benaddisoukaina@gmail.com";
-			final String password = "benaddiyassine1986";
+			final String password = "benaddi1986";
 			
 			Properties props = new Properties();
 			props.put("mail.smtp.auth", "true");

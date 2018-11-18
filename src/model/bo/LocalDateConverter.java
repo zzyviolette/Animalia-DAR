@@ -1,12 +1,9 @@
-package model.vo;
+package model.bo;
 import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-
-
-/************************Classe utilisée ecrire les dates sous un format désiré***********************/
 
 @Converter
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {

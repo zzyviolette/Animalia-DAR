@@ -1,6 +1,5 @@
 package model.bo;
 
-/****************** Commentaire d'une annonce ***************/
 
 import java.util.Date;
 
@@ -18,20 +17,16 @@ public class ACommentaire {
 	@Id
 	@GeneratedValue
 	int id;
-	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "annonce_id", referencedColumnName = "id")
+	@JoinColumn(name = "annonce_id", referencedColumnName = "id", nullable = false)
 	private Annonce annonce_id;
-	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Utilisateur user_id;
-	
 	String content;
 	Date date;
-	int state;
-	
 	public ACommentaire() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
     
 	public ACommentaire(Annonce annonce_id, Utilisateur user_id, String content) {
@@ -39,16 +34,7 @@ public class ACommentaire {
 		this.annonce_id = annonce_id;
 		this.user_id = user_id;
 		this.content = content;
-		this.state=0;
 	}
-	public int getState() {
-		return state;
-	}
-
-	public void setState(int state) {
-		this.state = state;
-	}
-
 	public Date getDate() {
 		return date;
 	}

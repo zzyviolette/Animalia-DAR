@@ -1,12 +1,10 @@
 package model.bo;
 
-
-/***************************Evenement***********************************/
-
-
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -18,35 +16,39 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import model.vo.LocalDateConverter;
 
 @Entity
 @Table(name = "EVENT_TABLE")
 public class Evenement {
-	
 	@Id
 	@GeneratedValue
 	private int event_id;
-	
     @Column(name="description", nullable=false, columnDefinition="longtext")
 	private String description;
 	private String title;
     private Date dateCreation;
-	private String location;
 
+	public Date getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(Date dateCreation) {
+		this.dateCreation = dateCreation;
+	}
 
 	@OneToOne
 	@JoinColumn(
 	name="event_photo",
 	referencedColumnName="id")
+	//@OneToOne(fetch = FetchType.LAZY, mappedBy = "event", cascade = CascadeType.ALL)
 	private PhotoEvent photo;
-	
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDate date;
 
+	private String location;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
@@ -56,21 +58,6 @@ public class Evenement {
 	@JoinTable(name = "event_user", joinColumns = @JoinColumn(name = "event_id", referencedColumnName = "event_id"), inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "id"))
 	Set<Utilisateur> users_inter;
 
-	
-	public Evenement(String description, String title, String location, Utilisateur user_id, LocalDate date) {
-		// super();
-		this.description = description;
-		this.title = title;
-		this.location = location;
-		this.user_id = user_id;
-		this.date = date;
-		this.dateCreation=new Date();
-	}
-
-	public Evenement() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -99,6 +86,21 @@ public class Evenement {
 		this.users_inter = users_inter;
 	}
 
+	public Evenement(String description, String title, String location, Utilisateur user_id, LocalDate date) {
+		// super();
+		this.description = description;
+		this.title = title;
+		this.location = location;
+		this.user_id = user_id;
+		this.date = date;
+		this.dateCreation=new Date();
+	}
+
+	public Evenement() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Utilisateur getUser_id() {
 		return user_id;
 	}
@@ -111,14 +113,7 @@ public class Evenement {
 		return description;
 	}
 
-	public Date getDateCreation() {
-		return dateCreation;
-	}
-
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
-	}
-
+	
 
 	public String getTitle() {
 		return title;

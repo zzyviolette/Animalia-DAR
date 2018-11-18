@@ -48,7 +48,6 @@ public class LoginServlet extends HttpServlet {
 			
 			if(user != null && utilsService.verifyHash(password, user.getPassword())) {
 				session.setAttribute("currentUser", user);
-				System.out.println("servlet login"+user.getEmail());
 				request.setAttribute(CHAMP_EMAIL, email);
 				request.setAttribute("name", user.getName());
 				request.setAttribute("id", user.getId());
@@ -56,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/acceuil.jsp");
 				dispatcher.forward(request, response);
 			} else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/erreur.html");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/erreur.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

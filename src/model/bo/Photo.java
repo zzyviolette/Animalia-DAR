@@ -1,11 +1,14 @@
 package model.bo;
 
-/*******************Photo des annonces***********************/
-
 import java.util.Base64;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 
@@ -16,6 +19,7 @@ public class Photo {
 	@Id
 	@GeneratedValue
 	private int id;
+	
 	
     @Column(name="base64Image", nullable=false, columnDefinition="longtext")
 

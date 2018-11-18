@@ -39,7 +39,7 @@ public class UtilsDao {
 		return user;
 	}
 	
-	public List<Notification> getNotifications(Integer id){
+	public List<Notification> getNotifications(){
 		Session session = HibernateUtil.openSession();
 		Query q = session.createQuery("from Notification order by id desc");
 			//	.setParameter("id_user_destination", id);
@@ -63,12 +63,13 @@ public class UtilsDao {
 		return notification;
 	}
 	
-	public void deleteNotification(Long id) {
+	public boolean deleteNotification(Long id) {
 		Session session = HibernateUtil.openSession();
 		Query q = session.createQuery("delete from Notification where id= :id ");
 		q.setParameter("id", id);
 		q.executeUpdate();
 		session.close();
+		return true;
 	}
 	
 	

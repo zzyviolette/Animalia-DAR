@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import model.bo.Comment;
 import model.bo.Utilisateur;
 import model.dao.CommentDao;
-import model.service.UtilsService;
+import model.dao.UtilisateurDao;
 
 /**
  * Servlet implementation class CommentServlet
@@ -28,8 +28,6 @@ public class CommentServlet extends HttpServlet {
 	public static final String CHAMP_NAME = "name";
 	public static final String CHAMP_DESCRIPTION = "description";
 	public static final String CHAMP_MARK = "mark";
-	
-	public UtilsService utilsService = new UtilsService();
 
 	public CommentServlet() {
 		super();
@@ -54,7 +52,7 @@ public class CommentServlet extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		ServletContext context = config.getServletContext();
-		jsp = context.getRequestDispatcher("/WEB-INF/jsp/pages/acceuil.jsp");
+		jsp = context.getRequestDispatcher("/WEB-INF/jsp/acceuil.jsp");
 	}
 
 	/**
@@ -65,35 +63,33 @@ public class CommentServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// Recuperation du nom d'utilisateur a partir de la session
-		if(utilsService.verifyLogin(request, response)) {
-			String action = request.getParameter("action");
-			if ("searchusername".equals(action)) {
-				HttpSession session = request.getSession();
-				Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
-				response.setContentType("text/plain charset=utf-8");
-				PrintWriter out = response.getWriter();
-				out.println(user.getName());
-			}
-
-			else {
-				String name = request.getParameter(CHAMP_NAME);
-				String description = request.getParameter(CHAMP_DESCRIPTION);
-				Integer mark = Integer.parseInt(request.getParameter(CHAMP_MARK));
-
-				CommentDao commentDao = new CommentDao();
-				commentDao.saveDetails(name, description, mark);
-				request.setAttribute(CHAMP_NAME, name);
-				request.setAttribute(CHAMP_DESCRIPTION, description);
-				request.setAttribute(CHAMP_MARK, mark);
-				request.setAttribute(CHAMP_NAME, name);
-				
-	            //Envoie de la reponse
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/tellus.html");
-				dispatcher.forward(request, response);
-			}
-		}
 		
+		String action = request.getParameter("action");
+		if ("searchusername".equals(action)) {
+			HttpSession session = request.getSession();
+			Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
+			response.setContentType("text/plain charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println(user.getName());
+		}
+
+		else {
+			String name = request.getParameter(CHAMP_NAME);
+			String description = request.getParameter(CHAMP_DESCRIPTION);
+			Integer mark = Integer.parseInt(request.getParameter(CHAMP_MARK));
+
+			CommentDao commentDao = new CommentDao();
+			commentDao.saveDetails(name, description, mark);
+			request.setAttribute(CHAMP_NAME, name);
+			request.setAttribute(CHAMP_DESCRIPTION, description);
+			request.setAttribute(CHAMP_MARK, mark);
+			request.setAttribute(CHAMP_NAME, name);
+			
+            //Envoie de la reponse
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/tellus.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)

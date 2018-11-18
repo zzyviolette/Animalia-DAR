@@ -25,7 +25,6 @@ public class MailServlet extends HttpServlet {
 		
 
 		public void init() {
-			// reads SMTP server setting from web.xml file
 			
 		}
 

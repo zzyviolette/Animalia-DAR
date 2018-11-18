@@ -69,7 +69,7 @@ public class UploadServlet extends HttpServlet {
 		    output = "SUCCESS";
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/updateprofile.html");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/updateprofile.jsp");
 		dispatcher.forward(request, response);		
 	}
 

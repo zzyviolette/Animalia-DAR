@@ -15,7 +15,7 @@ import utils.HibernateUtil;
 
 public class MessageDao {
 
-	public void addMessage(String content,int id,int id_user_destination) {
+	public Message addMessage(String content,int id,int id_user_destination) {
 
 		Session session = HibernateUtil.openSession();
 		Message message = new Message(content, 0,new Date(), id,id_user_destination);
@@ -23,6 +23,7 @@ public class MessageDao {
 		session.save(message);
 		transaction.commit();
 		session.close();
+		return message;
 	}
 
 	public void updateMessageState(int id) {
@@ -40,7 +41,7 @@ public class MessageDao {
 		session.close();
 	}
 
-	public void deleteMessage(Long id) {
+	public boolean deleteMessage(Long id) {
 
 		Session session = HibernateUtil.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -50,6 +51,7 @@ public class MessageDao {
 		System.out.println("delete id : "+ id);
 		transaction.commit();
 		session.close();
+		return true;
 	}
 
 	public List<Message> getAllMessagesByDestinationId(int id) {

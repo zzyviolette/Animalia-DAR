@@ -23,8 +23,6 @@ public class Avatar {
 	@Lob
 	@Column(name = "IMAGE", nullable = false, columnDefinition = "mediumblob")
 	private byte[] image;
-	
-	@Column(name = "URL", nullable = false, columnDefinition = "longtext")
 	String base64Image;
 
 	public Avatar() {
@@ -33,7 +31,6 @@ public class Avatar {
 
 	public Avatar(String name, byte[] image) {
 		super();
-		System.out.println(name+"***"+image);
 		this.name = name;
 		this.image = image;
 		base64Image = Base64.getEncoder().encodeToString(image);
