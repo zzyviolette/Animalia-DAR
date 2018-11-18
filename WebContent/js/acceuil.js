@@ -158,7 +158,7 @@ $(document).ready(function() {
 					menu('li_accessoires');
 					});
 			$("#li_comment").click(function() {
-						obj.src = "tellus.jsp";
+						obj.src = "tellus.html";
 						menu('li_comment');
 					});
 			$("#li_messages").click(function() {
