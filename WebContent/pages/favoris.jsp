@@ -186,7 +186,7 @@
 
 							<!-- Widget Area -->
 							<div class="sidebar-widget-area">
-								<h5 class="title">Catégories</h5>
+								<h5 class="title">Categories</h5>
 								<div class="widget-content">
 									<ul class="tags">
 
