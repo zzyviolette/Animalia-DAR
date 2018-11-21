@@ -1,290 +1,153 @@
-package model.dao;
+package controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.List;
 
-import java.util.Set;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.transform.DistinctRootEntityResultTransformer;
-import org.hibernate.transform.ResultTransformer;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
 
-import model.bo.ACommentaire;
-import model.bo.Annonce;
-import model.bo.Photo;
+import model.bo.Evenement;
 import model.bo.Utilisateur;
-import utils.HibernateUtil;
+import model.dao.EvenementDao;
 
-public class AnnonceDao {
+/**
+ * Servlet implementation class EvenementServlet
+ */
+public class EvenementServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-	/***********************Ajouter une annonce****************************/
-	
-	public void addAnnonce(String mail, String content, String title, String location, String categorie, byte[] image) {
+	public EvenementServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		Session session = HibernateUtil.openSession();
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", mail).uniqueResult();
-		Photo avatar = null;
-		Transaction transaction = session.beginTransaction();
-		if (image != null) {
-			avatar = new Photo(image);
-			session.save(avatar);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		EvenementDao event = new EvenementDao();
+		HttpSession session = request.getSession();
+		Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
+		String email = user.getEmail();
+		String action = request.getParameter("action");
+		switch (action) {
+
+		/**************** modifier un evenemeent ******************/
+
+		case "update": {
+
+			int id = Integer.parseInt(request.getParameter("id"));
+			String title = request.getParameter("title");
+			String location = request.getParameter("location");
+			String content = request.getParameter("content");
+			event.updateEvent(id, content, title, location);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+			dispatcher.forward(request, response);
+			break;
 
 		}
-		Annonce annonce = new Annonce(content, title, location, usr, categorie, avatar);
-		usr.getAnnonces().add(annonce);
-		session.save(annonce);
-		transaction.commit();
-		session.close();
+		/*************** Ajouter un evenement *****************/
+		case "add_event": {
 
-	}
+			String description = request.getParameter("description");
+			String title = request.getParameter("title");
+			String location = request.getParameter("location");
+			String date = request.getParameter("date");
+			byte[] bytes = null;
 
-	public void add_favoris(long annonce, String email) {
-		
-		/***********************aimer une annonce*****************/
-		
-		Session session = HibernateUtil.openSession();
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", email).uniqueResult();
-		Annonce a = (Annonce) session.createQuery("from Annonce as a where a.id = :annonce")
-				.setParameter("annonce", annonce).uniqueResult();
-
-		usr.getPosts_favoris().add(a);
-		a.getUsers_favoris().add(usr);
-		Transaction transaction = session.beginTransaction();
-		session.update(usr);
-		session.update(a);
-		transaction.commit();
-		session.close();
-
-	}
-
-	public void delete_favoris(long annonce, String email) {
-		
-		/*************************ne plusa aimer une annonce********************************/
-		
-		Session session = HibernateUtil.openSession();
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", email).uniqueResult();
-		Annonce a = (Annonce) session.createQuery("from Annonce as a where a.id = :annonce")
-				.setParameter("annonce", annonce).uniqueResult();
-		List<Annonce> annonces = usr.getPosts_favoris();
-		int i;
-		for (i = 0; i < annonces.size(); i++) {
-			if (annonces.get(i).equals(a)) {
-				break;
+			Part filePart = request.getPart("file");
+			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
+			if (!fileName.equals("")) {
+				InputStream fileContent = filePart.getInputStream();
+				bytes = IOUtils.toByteArray(fileContent);
 			}
+			event.addEvent(email, description, title, location, date, bytes);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+			dispatcher.forward(request, response);
+
+			break;
+
 		}
-		annonces.remove(i);
-		Set<Utilisateur> users = a.getUsers_favoris();
-		users.remove(usr);
-		Transaction transaction = session.beginTransaction();
-		session.update(usr);
-		session.update(a);
-		transaction.commit();
-		session.close();
+		/*********ne plus participer a un event*********/
+		case "notIntrested": {
 
-	}
-
-	public void updateAnnonce(Long id_annonce, String content, String title, String location) {
-
-		/*****************modifier une annonce****************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Annonce an = (Annonce) session.load(Annonce.class, id_annonce);
-		transaction.commit();	
-		an.setContent(content);
-		an.setTitle(title);
-		an.setLocation(location);
-		Transaction transaction1 = session.beginTransaction();
-		session.update(an);
-		transaction1.commit();
-		session.close();
-	}
-
-	public void deleteAnnonce(Long id) {
-
-		/**********************supprimer une annonce ***************************/
-		
-		Session session = HibernateUtil.openSession();
-		
-		Annonce a = (Annonce) session.createQuery("from Annonce as a where a.id = :annonce")
-				.setParameter("annonce", id).uniqueResult();
-		
-		List<ACommentaire> comments = a.getComments();
-		CommentaireDao c=new CommentaireDao();
-		int i;
-		for (i = 0; i < comments.size(); i++) {
-			//comments.remove(i);
-			c.delete_commentaire(comments.get(i).getId());
+			int e = Integer.parseInt(request.getParameter("id"));
+			event.notIntrested(e, email);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("events.jsp");
+                        dispatcher.forward(request, response);
+			break;
+			
 		}
-		Query q = session.createQuery("delete from Annonce as p where p.id= :id ");
-		q.setParameter("id", id);
-		q.executeUpdate();
-		session.close();
-	}
-	
-	
-	public  List<Object> deleteEventAndRefresh(Long id,String email) {
-
-		/**********************supprimer une annonce ***************************/
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-	
-		//delete	
-		Annonce a = (Annonce) session.createQuery("from Annonce as a where a.id = :annonce")
-				.setParameter("annonce", id).uniqueResult();
+		/************** afficher toute les evenements***************/
+		case "display_all": {
+			
 		
-		List<ACommentaire> comments = a.getComments();
-		CommentaireDao c=new CommentaireDao();
-		int i;
-		for (i = 0; i < comments.size(); i++) {
-			//comments.remove(i);
-			c.delete_commentaire(comments.get(i).getId());
+			response.setContentType("application/json;charset=UTF-8");
+			List<Object> posts = event.displayEvent();
+			JSONArray jsonArray = new JSONArray(posts);
+			String jsonStr = jsonArray.toString();
+			PrintWriter out = response.getWriter();
+			out.println(jsonStr);
+			break;
+
 		}
-		Query q = session.createQuery("delete from Annonce as p where p.id= :id ");
-		q.setParameter("id", id);
-		q.executeUpdate();
-		
-		//search
-		Query q2 = session.createQuery(
-				"from Utilisateur user JOIN user.annonces an where user.email =:email order by an.date desc")
-				.setParameter("email", email);
-		List<Object> list = q2.list();
-		
-		transaction.commit();
-		session.close();
-		return list;
-	}
-	
+		/************afficher mes annonces****************/
+		case "display_mine": {
+			
+			response.setContentType("application/json;charset=UTF-8");
+			System.out.println("email"+email);
+			List<Object> posts = event.displayMyEvent(email);
+			System.out.println("size"+posts.size());
+			JSONArray jsonArray = new JSONArray(posts);
+			String jsonStr = jsonArray.toString();
+			PrintWriter out = response.getWriter();
+			out.println(jsonStr);
+			break;
+			
+		}
+		/******************supprimer un evenement*********************/
+		case "supprimer": {
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			System.out.println("supprimer id"+id);
+	        event.deleteEvent(id);	
+			break;
 
-	public List<Object> displayAnnonces() {
+		}
+		/*********************s'interesser a un event**************************/
+		case "intrested": {
 
-		/****************afficher toute les annonces************/
-		
-		Session session = HibernateUtil.openSession();
-		Query q = session.createQuery("from Utilisateur user JOIN user.annonces an order by an.date desc");
-		List<Object> list = q.list();
-		session.close();
-		return list;
+			int e = Integer.parseInt(request.getParameter("id"));
+			event.intrested(e, email);
+	                RequestDispatcher dispatcher = request.getRequestDispatcher("events.jsp");
+			dispatcher.forward(request, response);
 
-	}
-
-	public List<Object> search_annonce(String keyword) {
-		
-		/************************chercher une annonce par mot cl�s ***************************/
-		
-		Session session = HibernateUtil.openSession();
-		Query q = session.createQuery(
-				"from Utilisateur user JOIN user.annonces an where an.content LIKE :word or an.title LIKE :word order by an.date desc")
-				.setString("word", "%" + keyword + "%");
-		List<Object> list = q.list();
-		session.close();
-		return list;
-
-	}
-
-	public List<Object> display_mine(String email) {
-
-		/***************************afficher mess annonces**********************************/
-		
-		Session session = HibernateUtil.openSession();
-		Query q = session.createQuery(
-				"from Utilisateur user JOIN user.annonces an where user.email =:email order by an.date desc")
-				.setParameter("email", email);
-		List<Object> list = q.list();
-		session.close();
-		return list;
-
-	}
-
-	public List<Object> filtrer_annonce(String categorie) {
-		
-		/**********************filtrer les annonces par categorie****************************/
-		
-		Session session = HibernateUtil.openSession();
-		Query q = session
-				.createQuery(
-						"from Utilisateur user JOIN user.annonces an where an.category=:category order by an.date desc")
-				.setParameter("category", categorie);
-		List<Object> list = q.list();
-		session.close();
-		return list;
-
-	}
-
-	public List<Object> afficher_annonce(long id) {
-		
-		/************************************afficher une annonce************************************/
-		
-		Session session = HibernateUtil.openSession();
-		System.out.println("********avant ");
-
-		Query q = session.createQuery(
-				"from Utilisateur user JOIN user.annonces an LEFT OUTER JOIN an.users_favoris LEFT OUTER JOIN an.comments com LEFT OUTER JOIN com.user_id where an.id=:id ")
-				.setParameter("id", id);
-		List<Object> list = q.list();
-		System.out.println("********"+list.size());
-		session.close();
-		return list;
-
-	}
-	
-	public void updateCommentState(String email) {
-		Session session = HibernateUtil.openSession();
-
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", email).uniqueResult();
-		List <Annonce>an= session.createQuery("from Annonce as an where an.user_id=:user")
-				.setParameter("user", usr).list();
-		for (Annonce m : an) {
-			List<ACommentaire>com = session.createQuery("from ACommentaire com where com.annonce_id=:annonce and com.state=0")
-					.setParameter("annonce", m).list();
-			for (ACommentaire c : com) {
-				Transaction transaction = session.beginTransaction();
-
-				c.setState(1);
-				session.update(m);
-				transaction.commit();
-
-			}
+			break;
 			
 		}
 		
 
-		session.close();
+		default: {
+			System.out.println("ERREUR evenementServlet");
+		}
+		}
 	}
-public List<Object> notification(String email){
-		
-		Session session = HibernateUtil.openSession();
-				Query q = session.createQuery("from Utilisateur user JOIN user.annonces an LEFT JOIN an.comments com where user.email=:email and com.state = 0 group by an.id order by an.date desc")
-				.setParameter("email", email);
-			
-		
-		List<Object> list =  q.list();
-	
-		System.out.println(list.size()+"loooool");
-		session.close();
-		return list;
-		
-	}
-	
-	public List<Object>favoris(String email){
-		
-		Session session = HibernateUtil.openSession();
-		Query q = session.createQuery(
-				"from Utilisateur user JOIN user.posts_favoris an where user.email =:email order by an.date desc")
-				.setParameter("email", email);
-		List<Object> list = q.list();
-		session.close();
-		return list;
-		
-		
-	}
-
 
 }
 
