@@ -109,12 +109,7 @@ public class AnnonceServlet extends HttpServlet {
 		case "supprimer": {
 			
 			Long id = Long.parseLong(request.getParameter("id"));	
-			response.setContentType("application/json;charset=UTF-8");
-			List<Object> posts = annonce.deleteEventAndRefresh(id, email);
-			JSONArray jsonArray = new JSONArray(posts);
-			String jsonStr = jsonArray.toString();
-			PrintWriter out = response.getWriter();
-			out.println(jsonStr);
+			annonce.deleteAnnonce(id);			
 			break;
 
 		}
