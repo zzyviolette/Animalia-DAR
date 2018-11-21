@@ -107,11 +107,9 @@ public class AnnonceServlet extends HttpServlet {
 		}
 		/***********************supprimer une annonce*********************/
 		case "supprimer": {
-			System.out.println("testsupp");
-			Long id = Long.parseLong(request.getParameter("id"));
-			annonce.deleteAnnonce(id);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/myposts.jsp");
-			dispatcher.forward(request, response);
+			
+			Long id = Long.parseLong(request.getParameter("id"));	
+			annonce.deleteAnnonce(id);			
 			break;
 
 		}
@@ -185,7 +183,6 @@ public class AnnonceServlet extends HttpServlet {
 			response.setContentType("text/plain;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			System.out.println("test");
-System.out.println("coucoucccccccc"+user.getId());
 			out.println(user.getId());
 			
 			

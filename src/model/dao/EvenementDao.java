@@ -21,6 +21,7 @@ public class EvenementDao {
 		/******************Ajouter une evenement*********************/
 		
 		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
 		LocalDate d = LocalDate.now();
 
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
@@ -28,7 +29,6 @@ public class EvenementDao {
 
 		Evenement event = new Evenement(description, title, location, usr, d);
 		usr.getEvenements().add(event);
-		Transaction transaction = session.beginTransaction();
 		if(image!=null) {
 			System.out.println("not null");
 		PhotoEvent photo=new PhotoEvent(image);
@@ -53,10 +53,9 @@ public class EvenementDao {
 		ev.setDescription(content);
 		ev.setTitle(title);
 		ev.setLocation(location);
-		Transaction transaction1 = session.beginTransaction();
 		session.update(ev);
 
-		transaction1.commit();
+		transaction.commit();
 		session.close();
 	}
 	public void deleteEvent(int id) {
@@ -64,19 +63,25 @@ public class EvenementDao {
 		/***************************Supprimer un evenement***********************************/
 		
 		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
 		Query q = session.createQuery("delete from Evenement as p where p.event_id= :id ");
 		q.setParameter("id", id);
 		q.executeUpdate();
+		System.out.println("delete id : "+ id);
+		transaction.commit();
 		session.close();
 	}
+	
 
 	public List<Object> displayEvent() {
 		
 		/************************Afficher les evenements**************************************/
 		
 		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
 		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER JOIN ev.photo LEFT OUTER JOIN ev.users_inter order by ev.event_id ");
 		List<Object> list = q.list();
+		transaction.commit();
 		session.close();
 		return list;
 
@@ -86,10 +91,13 @@ public class EvenementDao {
 		/***********************afficher mes evenements*****************************/
 		
 		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
 				.setParameter("email", email).uniqueResult();
-		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER JOIN ev.photo LEFT OUTER JOIN ev.users_inter where user.id=:usr order by ev.event_id").setParameter("usr", usr.getId());
+		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER  JOIN ev.photo LEFT OUTER JOIN ev.users_inter where user.id=:usr order by ev.event_id").setParameter("usr", usr.getId());
+		
 		List<Object> list = q.list();
+		transaction.commit();
 		session.close();
 		return list;
 
@@ -100,13 +108,13 @@ public class EvenementDao {
 		/*************************S'interesser a un evenement****************************/
 		
 		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
 				.setParameter("email", email).uniqueResult();
 		Evenement e = (Evenement) session.createQuery("from Evenement as e where e.event_id = :event")
 				.setParameter("event", event).uniqueResult();
 		usr.getEvents_inter().add(e);
 		e.getUsers_inter().add(usr);
-		Transaction transaction = session.beginTransaction();
 		session.update(usr);
 		session.update(e);
 		transaction.commit();
@@ -116,9 +124,10 @@ public class EvenementDao {
 	
 	public void notIntrested(int event,String email) {
 		
-		/********************************desinteressé d'un evenement**********************************/
+		/********************************desinteressï¿½ d'un evenement**********************************/
 		
 		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
 				.setParameter("email", email).uniqueResult();
 		Evenement e = (Evenement) session.createQuery("from Evenement as e where e.event_id = :event")
@@ -135,7 +144,6 @@ public class EvenementDao {
 		ev.remove(i);		
 		Set<Utilisateur>users=e.getUsers_inter();
 		users.remove(usr);
-		Transaction transaction = session.beginTransaction();
 		session.update(usr);
 		session.update(e);
 		transaction.commit();
@@ -145,6 +153,9 @@ public class EvenementDao {
 	}
 
 }
+
+
+
 
 
 
