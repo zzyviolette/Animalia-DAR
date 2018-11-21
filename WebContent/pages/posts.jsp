@@ -52,7 +52,7 @@
 										<a href="#" data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Partagez votre amour avec nous
+										<a>Partagez votre amour avec nous
 											!</a>
 									</h2>
 								</div>
@@ -71,7 +71,7 @@
 										<a href="#" data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Sauvez les animaux qui sont
+										<a>Sauvez les animaux qui sont
 											notre espoir!</a>
 									</h2>
 								</div>
@@ -90,7 +90,7 @@
 										<a href="#" data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Les autres qui ne decoivent
+										<a>Les autres qui ne decoivent
 											jamais</a>
 									</h2>
 								</div>
