@@ -227,14 +227,14 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
           "By <a href='#'>"+annonce[0].name+"</a>"+
         "</p>"+
         "<p>A "+annonce[1].location+" &nbsp;</p>"+
-       "<p>"+annonces.length+" comments</p>"+
+       "<p>"+annonces.length+" commentaires</p>"+
       "</div>"+
      " <p>"+annonce[1].content+"</p>"+
 
       " </div>"+
   "</div>"+
   "<div class='comment_area clearfix mt-70' id='comments'>"+
-    "<h5 class='title'>Comments</h5>";
+    "<h5 class='title'>Commentaires</h5>";
 
   
  b=" </div>"+
@@ -251,7 +251,7 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
            " <textarea name='content_comment' id='message' required=''></textarea>"+
            " <span class='highlight'></span>"+
             "<span class='bar'></span>"+
-            "<label>Comment</label>"+
+            "<label>Commentaire</label>"+
           "</div>"+
        " </div>"+
         "<div class='col-12'>"+
