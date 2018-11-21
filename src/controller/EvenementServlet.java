@@ -126,14 +126,7 @@ public class EvenementServlet extends HttpServlet {
 			
 			int id = Integer.parseInt(request.getParameter("id"));
 			System.out.println("supprimer id"+id);
-			response.setContentType("application/json;charset=UTF-8");
-			System.out.println("email"+email);
-			List<Object> posts = event.deleteEventAndRefresh(id, email);
-			System.out.println("size"+posts.size());
-			JSONArray jsonArray = new JSONArray(posts);
-			String jsonStr = jsonArray.toString();
-			PrintWriter out = response.getWriter();
-			out.println(jsonStr);
+	        event.deleteEvent(id);	
 			break;
 
 		}
