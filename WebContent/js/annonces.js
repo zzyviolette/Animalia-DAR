@@ -425,7 +425,7 @@ function delete_comment(id){
 		}
 /************************confirmer les suppression***************************/
 function valider(){
-			    var r = confirm("Êtes-vous surs de vouloir supprimer!");
+			    var r = confirm("Et&ecircs-vous sur de vouloir supprimer!");
 			    if (r == true) {
 			      return true;
 			    } else {
