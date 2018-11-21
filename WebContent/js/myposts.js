@@ -228,7 +228,7 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
       "</h4>"+
       "<div class='post-meta mb-50'>"+
         "<p>"+
-          "By <a href='#'>"+annonce[0].name+"</a>"+
+          "PAR <a href='#'>"+annonce[0].name+"</a>"+
         "</p>"+
         "<p>A "+annonce[1].location+" &nbsp;</p>"+
        "<p>"+annonces.length+" commentaires</p>"+
