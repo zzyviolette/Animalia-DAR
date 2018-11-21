@@ -209,10 +209,9 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
     "<div class='single-blog-content'>"+
     "<div class='widget-content'>"+
     "<ul class='tags'>"+
-    "<li><form style='float:right;' action='annonce' method='post' onsubmit='return valider()'>"+//supprimer
-    "<button class='button' type='submit' name='action' value='supprimer' >Supprimer</button>"+
-    "<input type='hidden' name='id' value='"+annonce[1].id+"' />"+
-    "</form></li>"+
+    "<li>"+//supprimer
+    "<button class='button' style='float:right;' onclick='supprimer(&quot;"+annonce[1].id+"&quot;)'>Supprimer</button>"+
+    "</li>"+
     "<li><button class='button' style='float:right;' onclick='myBtn(&quot;"+annonce[1].id+"&quot;,&quot;"+annonce[1].title+"&quot;,&quot;"+annonce[1].content+"&quot;,&quot;"+annonce[1].location+"&quot;)'>Modifier</button></li>"+
     "<li><form  style='float:right;' action='annonce' method='post'>"+
     like+
@@ -306,6 +305,59 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
      latest_posts.appendChild(recent_post);
 	
 }
+
+function supprimer(id) {
+	
+	//Supprimer un message//
+	
+	const swalWithBootstrapButtons = swal.mixin({
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: false,
+		})
+
+		swalWithBootstrapButtons({
+		  postion : 'bottom-start',	
+		  title: 'Vous &ecirctes sur de le supprimer?',
+		  text: "",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Oui,Supprimer!',
+		  cancelButtonText: 'Non, Annuler!',
+		  reverseButtons: true
+		}).then((result) => {
+		  if (result.value) {
+
+		  	$.ajax({
+				"url" :  "annonce",
+				"type" : "post",
+				"data" : {
+					"id" : id,
+					"action" : "supprimer"
+				},
+			"dataType" : "json",
+		    "success" : function( annonces, textStatus, jqXHR) {
+			  afficher_annonce(annonces);
+			  latest_posts(annonces);
+			    }
+			});
+			
+		  } else if (
+				    // Read more about handling dismissals
+				    result.dismiss === swal.DismissReason.cancel
+				  ) {
+				    swalWithBootstrapButtons(
+				      'Annuler',
+				      'Vous avez annul&eacute :)',
+				      'erreur'
+				    )
+				  }
+				})
+		  }
+		  
+	
+		  
+		  
 /*************************afficher l'annonce modifier****************************/
 function display(annonce){
 	var a=document.getElementsByClassName(annonce);
@@ -475,3 +527,4 @@ function getId(callback){
 	});
 
 }
+
