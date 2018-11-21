@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark" style="background-image: url('../img/pet-login.jpg');background-size: 100%;">
 
 	<div class="container">
 		<div class="card card-login mx-auto mt-5">
