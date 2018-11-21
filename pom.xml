@@ -63,7 +63,7 @@
 							</includes>
 						</resource>
 						<resource> 
-                        <directory>src/main/webapp</directory> 
+                        <directory>${project.basedir}/WebContent</directory> 
                         <includes> 
                             <include>*.*</include> 
                             <include>**/*.*</include>  
