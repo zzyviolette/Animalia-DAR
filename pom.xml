@@ -64,7 +64,7 @@
 							</includes>
 						</resource>
 						<resource>
-							<directory>${project.basedir}/WebContent/js</directory>
+							<directory>${project.basedir}/WebContent</directory>
 							<includes>
 								<include>**/*.js</include>
 							</includes>
