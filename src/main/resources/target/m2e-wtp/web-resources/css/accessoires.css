@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+
+#iframe-content{
+	margin :20px;
+}
+#search {
+	width: 250px;
+	margin: 0 auto;
+}
+
+#customers {
+	margin: 20px auto;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #1E90FF;
+    color: white;
+}
+
+span {
+	margin: 15px;
+}
+
+#loading {
+	margin: 25px auto;
+	width: 150px;
+	height: 60px;
+}
+
+#result {
+	margin: 100px auto;
+	width: 300px;
+	font-size: 18px;
+	text-align:center
+}
+
+#pagination{
+
+	margin: 25px auto;
+	text-align: center;
+	width:800px;
+	
+	
+}
+
+
+
+
+

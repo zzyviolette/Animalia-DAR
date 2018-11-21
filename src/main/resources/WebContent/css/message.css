@@ -1,0 +1,81 @@
+@CHARSET "utf-8";
+
+.content {
+	width :100%;
+	height: 150px;
+	background-image: url("../img/mail.png");
+	background-repeat: no-repeat;
+	background-size:100%;
+	
+}
+
+.page_content{
+	background-color: white;
+}
+
+table {
+	/* font-family:  Arial, Helvetica, sans-serif; */
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	text-align: center;
+	width: 80%
+}
+
+table td, table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+table tr:hover {
+	background-color: #ddd;
+}
+
+th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: rgb(25, 138, 241);
+	color: white;
+}
+
+span {
+	margin: 5px;
+}
+
+.custom-btn-close{
+	color:white;
+	background-color:grey;
+}
+
+.custom-btn-send{
+	color:white;
+	background-color:rgb(25, 138, 241);
+}
+
+.custom-textarea{
+
+	width: 97%;
+	height:100px;
+
+}
+
+.custom-input{
+
+
+ 	width: 97%;
+	
+}
+
+
+#myModalLabel{
+	text-align:center;
+	font-size:24px;
+	color:rgb(25, 138, 241);
+}

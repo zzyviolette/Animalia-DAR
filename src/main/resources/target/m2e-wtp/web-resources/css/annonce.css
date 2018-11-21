@@ -1,0 +1,351 @@
+@charset "ISO-8859-1";
+
+#actualite {
+	height: 100%;
+	text-align: center;
+	background-color: white;
+}
+
+#new_annonce {
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 30px; text-align : center;
+	width: 80%;
+	text-align: center;
+}
+
+#annonce_table {
+	/*background-color: #f2f2f2;*/
+	text-align: center;
+}
+
+.images:hover {
+	width: 200;
+	height: 200;
+}
+
+.images {
+	width: 150;
+	height: 150;
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+}
+
+td {
+	float: right;
+}
+
+.champ {
+	width: 80%;
+	margin: 8px 0;
+	border: none;
+	padding: 12px 20px;
+}
+
+.search {
+	width: 25%;
+	margin: 8px 5px;
+	padding: 8px 10px;
+}
+
+.champ_pop {
+	width: 80%;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 12px 20px;
+}
+
+#pop_content {
+	height: 150px;
+}
+
+.btn-group .button {
+	background-color: #615f5f; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border: none;
+	cursor: pointer;
+	float: left;
+}
+
+.group .button:hover {
+	background-color: #4bd4b5; /* Green */
+	color: white;
+}
+
+.group .button {
+	background-color: white; /* Green */
+	border: none;
+	color: #4bd4b5;
+	margin-right: 30px;
+	padding: 10px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border: none;
+	cursor: pointer;
+	float: left;
+	padding: 10px 5px
+}
+
+.btn-group .button:hover {
+	background-color: #4b7e78; /* Green */
+}
+
+a:link {
+	text-decoration: none;
+}
+
+.btn-group {
+	float: right;
+	margin-top: 0px;
+}
+
+.group {
+	margin-top: 0px;
+	padding-right: 20px;
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+.album {
+	float: right;
+	margin-top: 0px;
+}
+
+#create_btn {
+	width: 80%;
+	background-color: #4bd4b5;
+	color: white;
+	padding: 14px 0px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#search_btn {
+	width: 15%;
+	background-color: #4bd4b5;
+	color: white;
+	padding: 10px 2px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#search_bar {
+	background-color: #615f5f;
+	text-align: center;
+}
+
+.sepcomment {
+	margin-top: 0px;
+}
+
+#update {
+	width: 80%;
+	background-color: black;
+	color: white;
+	padding: 10px 15px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#annonce_content {
+	height: 150px;
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: #f8f8f8;
+}
+
+.commentaire {
+	width: 100%;
+	height: 50px;
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.title {
+	margin-top: 20px;
+	color: #4b7e78;
+	font-size: 24px;
+}
+
+#annonce_tb {
+	border-collapse: separate;
+	border-spacing: 5px;
+	margin: 8px 0;
+	margin: 0 auto;
+	text-align: center;
+	width: 70%;
+}
+
+tr {
+	width: 80%;
+	padding: 0px;
+	text-align: center;
+}
+
+/*-- Global Selectors --*/
+a {
+	color: #47649F;
+}
+
+.contenu {
+	margin-top: 10px;
+	float: left;
+	padding-left: 0;
+	text-align: justify;
+	font-size: 14px;
+	color: #615f5f;
+}
+/*-- Bootstrap Override Style --*/
+
+/*-- Content Style --*/
+.post-footer-option li {
+	float: left;
+	margin-right: 50px;
+	padding-bottom: 15px;
+}
+
+.post-footer-option li a {
+	color: #AFB4BD;
+	font-weight: 500;
+	font-size: 1.3rem;
+}
+
+.photo-profile {
+	border: 1px solid #DDD;
+}
+
+.anchor-username h4 {
+	font-weight: bold;
+}
+
+.anchor-time {
+	float: left;
+	font-size: 1.2rem;
+	color: grey;
+}
+
+.post-footer-comment-wrapper {
+	background-color: white;
+}
+
+#comment_photo {
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+}
+
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+input[type=button]:hover {
+	background-color: #45a049;
+}
+
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.anchor-username {
+	float: left;
+	margin-right: 20px;
+}
+
+.sepost {
+	float: right;
+	margin-bottom: 0px;
+	width: 100%;
+	color: red;
+	line-height: 5;
+}
+
+.commentext {
+	float: left;
+	display: block;
+	text-align: justify;
+	padding-right: 20px;
+	margin-left: 20px;
+	font-size: 12px;
+}
+
+.fileContainer {
+	overflow: hidden;
+	position: relative;
+	margin-right: 20px;
+	float: left;
+}
+
+.fileContainer [type=file] {
+	cursor: inherit;
+	display: block;
+	font-size: 999px;
+	filter: alpha(opacity = 0);
+	min-height: 100%;
+	min-width: 100%;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	text-align: right;
+	top: 0;
+}
+
+/* Example stylistic flourishes */
+.fileContainer {
+	background: white;
+	border-radius: .5em;
+	float: left;
+	padding: .5em;
+}
+
+.fileContainer [type=file] {
+	cursor: pointer;
+}
