@@ -1,25 +1,23 @@
 $( document ).ready(function() {
-	var event=$("#myeven");
-	$.ajax({
+		$.ajax({
 		"url" : "event",
 		"type" : "post",
-		"data" : event,
+		"data" : {
+		  "action" : 'display_mine'
+		},
 		"dataType" : "json",
 		"success" : function( events, textStatus, jqXHR) {
 			getId((data)=>{
-				
-				console.log(data);
-				id =data;
-				console.log(id);
-			});
-			setTimeout(function(){
 				display_events(events,id);
-			}, 2000);						
+			});
+				
 		}
 	
 	});
 });
-/***************formulaire d'ajout d'event******************/
+
+
+/** *************formulaire d'ajout d'event***************** */
 function afficher_form(){
 	var f=document.getElementById("new_event");
 	if( $("#new_event").css('display') == 'none'){
@@ -30,7 +28,7 @@ function afficher_form(){
 	else
 		f.style.display="none";
 }
-/***************afficher les events******************/
+/** *************afficher les events***************** */
 
 function display_events(events,id){
 	var i=0;
@@ -99,8 +97,7 @@ var interesse="<a><span><form action='event' method='post'>"+
 	        "<p>&nbsp; &nbsp; &nbsp;"+participant+" participants</p>"+
 	        "</div>"+
 	        "<button class='button' onclick='myBtn(&quot;"+event[1].event_id+"&quot;,&quot;"+event[1].title+"&quot;,&quot;"+event[1].description+"&quot;,&quot;"+event[1].location+"&quot;)'>Modifier</button>"+
-	    	"<form action='event' method='post' style='display:inline;'onsubmit='return valider()'> "+
-			"<input type='hidden' name='id' value='"+event[1].event_id+"' />"+"<input class='button' name='action' type='submit' value='supprimer'></form>"+
+			"<button class='button' onclick='supprimer(&quot;"+event[1].event_id+"&quot;)'>Supprimer</button>"+
 	 " </div>"+
 	"</div>";
 	    var objTo = document.getElementById('events');
@@ -112,7 +109,62 @@ var interesse="<a><span><form action='event' method='post'>"+
 	}
 	
 }
-/**************si un utilisateur est interessé par un event****************/
+
+
+function supprimer(id) {
+	
+	//Supprimer un message//
+	
+	const swalWithBootstrapButtons = swal.mixin({
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: false,
+		})
+
+		swalWithBootstrapButtons({
+		  postion : 'bottom-start',	
+		  title: 'Vous &ecirctes sur de le supprimer?',
+		  text: "",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Oui,Supprimer!',
+		  cancelButtonText: 'Non, Annuler!',
+		  reverseButtons: true
+		}).then((result) => {
+		  if (result.value) {
+
+		  	$.ajax({
+				"url" :  "event",
+				"type" : "post",
+				"data" : {
+					"id" : id,
+					"action" : "supprimer"
+				},
+			"dataType" : "json",
+		    "success" : function( events, textStatus, jqXHR) {
+			   getId((data)=>{
+				display_events(events,id);
+			    });
+			    }
+			});
+			
+		  } else if (
+				    // Read more about handling dismissals
+				    result.dismiss === swal.DismissReason.cancel
+				  ) {
+				    swalWithBootstrapButtons(
+				      'Annuler',
+				      'Vous avez annul&eacute :)',
+				      'erreur'
+				    )
+				  }
+				})
+		  }
+		  
+		  
+		  
+
+/** ************si un utilisateur est interessé par un event*************** */
 function deja_interesse(events,id,id_ev){
 	
 	var i=0;
@@ -132,7 +184,7 @@ function deja_interesse(events,id,id_ev){
 	return false;
 }
 
-/*************************Affichage des dates *********************************/
+/** ***********************Affichage des dates ******************************** */
 function jour(date){
 	var moonLanding = new Date(date);
 	return moonLanding.getDate();
@@ -162,21 +214,20 @@ function jour(date){
 			var moonLanding = new Date(date);
 			return moonLanding.getMinutes();
 			}
-			/****************confirmer la suppression*****************/
-function valider(){
-	
-	//test
-			    var r = confirm("Etes-vous sur de vouloir supprimer!");
-			    if (r == true) {
-			      return true;
-			    } else {
-			       return false;
-			    }
 			
-		}
-/***************popup window de modification*****************/
+			
+			/** **************confirmer la suppression**************** */
+//function valider(){
+//			    var r = confirm("Etes-vous sur de vouloir supprimer!");
+//			    if (r == true) {
+//			      return true;
+//			    } else {
+//			       return false;
+//			    }
+//			
+//		}
+/** *************popup window de modification**************** */
 function myBtn(id,titre,content,adresse) {
-
 				var modal = document.getElementById('myModal');
 				var title = document.getElementById('pop_title');
 				var contenu = document.getElementById('pop_content');
@@ -190,20 +241,21 @@ function myBtn(id,titre,content,adresse) {
 				location.value=adresse;
 				modal.style.display = "block";
 			}
-			function fermer() {
+			
+function fermer() {
 				var modal = document.getElementById('myModal');
 
 				modal.style.display = "none";
-			}
+}
 
-			window.onclick = function(event) {
+window.onclick = function(event) {
 				var modal = document.getElementById('myModal');
 
 				if (event.target == modal) {
 					modal.style.display = "none";
 				}
-			}
-	/*****************l'id de current user**********************/
+}
+	/** ***************l'id de current user********************* */
 function getId(callback){
 				var id;
 				
@@ -211,14 +263,13 @@ function getId(callback){
 					"url" : "annonce",
 					"type" : "post",
 					"data" : {
-						"action" : "searchuserid",
+						"action" : "searchuserid"
 					},
-					"dataType" : "" +
-							"",
+					"dataType" : "text",
+							
 					"success" : function(text) {
-			           id=text;
-			           console.log(id);
-			           callback(id);
+		
+			           callback(text);
 			          
 						} 
 
