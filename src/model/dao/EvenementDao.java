@@ -116,7 +116,7 @@ public class EvenementDao {
 	
 	public void notIntrested(int event,String email) {
 		
-		/********************************desinteressÃ© d'un evenement**********************************/
+		/********************************desinteressé d'un evenement**********************************/
 		
 		Session session = HibernateUtil.openSession();
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
@@ -145,7 +145,6 @@ public class EvenementDao {
 	}
 
 }
-
 
 
 

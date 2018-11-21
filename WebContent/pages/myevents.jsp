@@ -44,7 +44,7 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcumb-content text-center">
-						<h2>Mes evÃ©nements</h2>
+						<h2>Mes evénements</h2>
 					</div>
 				</div>
 			</div>
@@ -298,4 +298,3 @@
 		<!-- Active js -->
 		<script src="../js/active.js"></script>
 		<script src="../js/myevents.js"></script>
-	<script src="../js/plugins/sweetalert2.all.min.js" type="text/javascript"></script>

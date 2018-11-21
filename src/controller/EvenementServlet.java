@@ -111,9 +111,7 @@ public class EvenementServlet extends HttpServlet {
 		case "display_mine": {
 			
 			response.setContentType("application/json;charset=UTF-8");
-			System.out.println("email"+email);
 			List<Object> posts = event.displayMyEvent(email);
-			System.out.println("size"+posts.size());
 			JSONArray jsonArray = new JSONArray(posts);
 			String jsonStr = jsonArray.toString();
 			PrintWriter out = response.getWriter();
@@ -125,15 +123,9 @@ public class EvenementServlet extends HttpServlet {
 		case "supprimer": {
 			
 			int id = Integer.parseInt(request.getParameter("id"));
-			System.out.println("supprimer id"+id);
-			response.setContentType("application/json;charset=UTF-8");
-			System.out.println("email"+email);
-			List<Object> posts = event.deleteEventAndRefresh(id, email);
-			System.out.println("size"+posts.size());
-			JSONArray jsonArray = new JSONArray(posts);
-			String jsonStr = jsonArray.toString();
-			PrintWriter out = response.getWriter();
-			out.println(jsonStr);
+			event.deleteEvent(id);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+                        dispatcher.forward(request, response);		
 			break;
 
 		}
@@ -157,4 +149,3 @@ public class EvenementServlet extends HttpServlet {
 	}
 
 }
-
