@@ -136,7 +136,7 @@
 						<div class="col-12">
 							<div class="group">
 								<select id="annonce_categorie" name="categorie" >
-									<option>-selectionner une catégorie-</option>
+									<option>-selectionner une cat&eacutegorie-</option>
 									<option value="chercher animal">chercher un animal</option>
 									<option value="proposer animal">proposer un animal</option>
 									<option value="chercher garde animaux">chercher garde
