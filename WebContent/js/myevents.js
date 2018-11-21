@@ -164,6 +164,8 @@ function jour(date){
 			}
 			/****************confirmer la suppression*****************/
 function valider(){
+	
+	//test
 			    var r = confirm("Etes-vous sur de vouloir supprimer!");
 			    if (r == true) {
 			      return true;
