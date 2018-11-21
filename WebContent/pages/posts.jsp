@@ -90,7 +90,7 @@
 										<a href="#" data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Les etres qui ne decoivent
+										<a href="single-post.html">Les autres qui ne decoivent
 											jamais</a>
 									</h2>
 								</div>
