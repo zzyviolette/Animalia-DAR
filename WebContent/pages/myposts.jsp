@@ -450,7 +450,7 @@
 	<!-- Active js -->
 	<script src="../js/active.js"></script>
 	<script src="../js/myposts.js"></script>
-
+<script src="../js/plugins/sweetalert2.all.min.js" type="text/javascript"></script>
 
 </body>
 
