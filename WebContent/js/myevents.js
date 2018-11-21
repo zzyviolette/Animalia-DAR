@@ -1,4 +1,8 @@
 $( document ).ready(function() {
+	displayAllEvents();
+});
+
+function displayAllEvents(){
 		$.ajax({
 		"url" : "event",
 		"type" : "post",
@@ -14,8 +18,7 @@ $( document ).ready(function() {
 		}
 	
 	});
-});
-
+}
 
 /** *************formulaire d'ajout d'event***************** */
 function afficher_form(){
@@ -140,13 +143,11 @@ function supprimer(id) {
 					"id" : id,
 					"action" : "supprimer"
 				},
-			"dataType" : "json",
-		    "success" : function( events, textStatus, jqXHR) {
-			   getId((data)=>{
-				display_events(events,id);
-			    });
-			    }
-			});
+			"dataType" : "",
+		    "success" : function() {
+			   displayAllEvents();
+			   }
+		  	});
 			
 		  } else if (
 				    // Read more about handling dismissals
