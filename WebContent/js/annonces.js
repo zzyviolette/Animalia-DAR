@@ -1,12 +1,9 @@
 $( document ).ready(function() {
-	setTimeout(function(){
 							
-	setCount();
-		}, 2000);
-	 
-	
+    displayAllAnnonces();
+	 	
 });
-function setCount(){
+function displayAllAnnonces(){
 	
 	/**
 	 * **************recuperer et afficher toute les annonces de la
@@ -425,7 +422,7 @@ function delete_comment(id){
 		}
 /************************confirmer les suppression***************************/
 function valider(){
-			    var r = confirm("Et&ecircs-vous sur de vouloir supprimer!");
+			    var r = confirm("Etes-vous sur de vouloir supprimer!");
 			    if (r == true) {
 			      return true;
 			    } else {
