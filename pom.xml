@@ -19,6 +19,13 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
 			 <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -56,33 +63,12 @@
 								<include>**/*.jar</include>
 							</includes>
 						</resource>
-	                    <resource>
+	<resource>
 							<directory>src/main/resources</directory>
 							<includes>
 								<include>**/*.xml</include>
 							</includes>
 						</resource>
-						<resource> 
-                        <directory>${project.basedir}/WebContent</directory> 
-                        <includes> 
-                            <include>*.*</include> 
-                            <include>**/*.*</include>  
-                        </includes>  
-                    </resource> 
-							<resource> 
-						 <directory>${project.basedir}/WebContent/WEB-INF</directory> 
-                        <includes> 
-                            <include>*.*</include> 
-                            <include>**/*.*</include>  
-                        </includes>  
-                    </resource> 
-										<resource> 
-						 <directory>${project.basedir}/WebContent/META-INF</directory> 
-                        <includes> 
-                            <include>*.*</include> 
-                            <include>**/*.*</include>  
-                        </includes>  
-                    </resource> 
 					</webResources>
 				</configuration>
 				<version>2.1.1</version>

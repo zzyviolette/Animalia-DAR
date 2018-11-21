@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	window.setInterval(function(){setCount();},30000);
+	window.setInterval(function(){setCount();},7000);
 
 	$.ajax({
 		"url" : "user",

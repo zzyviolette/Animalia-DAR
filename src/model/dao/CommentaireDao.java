@@ -17,7 +17,6 @@ public class CommentaireDao {
 		/***************** ajouter une commentaire *******************/
 
 		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
 				.setParameter("email", mail).uniqueResult();
 		Annonce anno = (Annonce) session.createQuery("from Annonce as a where a.id = :annonce")
@@ -25,6 +24,7 @@ public class CommentaireDao {
 		ACommentaire com = new ACommentaire(anno, usr, content);
 		com.setDate(new Date());
 		anno.getComments().add(com);
+		Transaction transaction = session.beginTransaction();
 		session.save(com);
 		transaction.commit();
 		session.close();
@@ -38,11 +38,9 @@ public class CommentaireDao {
 		 *********************************/
 
 		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
 		Query q = session.createQuery("delete from ACommentaire as c where c.id= :id ");
 		q.setParameter("id", id);
 		q.executeUpdate();
-		transaction.commit();
 		session.close();
 
 	}
@@ -53,13 +51,13 @@ public class CommentaireDao {
 
 		int cmpt;
 		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
 				.setParameter("email", email).uniqueResult();
 		Query q = session
 				.createQuery("from Annonce as an JOIN an.comments as com where an.user_id= :user  and com.state= 0")
 				.setParameter("user", usr);
 
+		Transaction transaction = session.beginTransaction();
 		cmpt = q.list().size();
 		transaction.commit();
 		session.close();

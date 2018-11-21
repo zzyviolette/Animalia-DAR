@@ -1,13 +1,15 @@
 $( document ).ready(function() {
-				
-	displayAllEvents();
+setCount();
+	 window.setInterval(function() {
+		 setCount();
+	 }, 20000);
 	
 });
 /**
  * **************recuperer et afficher toute les evenements de la
  * base****************
  */
-function displayAllEvents(){
+function setCount(){
 $.ajax({
 		
 		"url" : "event",
@@ -20,8 +22,10 @@ $.ajax({
 				console.log(data);
 				id =data;
 				console.log(id);
-				display_events(annonces,id);
 			});
+			setTimeout(function(){
+				display_events(annonces,id);
+			}, 2000);	
 		}
 	});	
 }
@@ -85,7 +89,7 @@ interesse="<a><span><form action='event' method='post'>"+
 	     "<p>"+event[1].description+"</p>"+
 	      "<div class='post-meta'>"+
 	        "<p>"+
-	         " PAR <a href='#'>"+event[0].name+"</a>"+
+	         " By <a href='#'>"+event[0].name+"</a>"+
 	        "</p>"+
 	        "<p> A "+event[1].location+"</p>"+
 	        "<p>&nbsp; &nbsp; &nbsp;"+participant+" participants</p>"
@@ -191,7 +195,7 @@ function getId(callback){
 		"url" : "annonce",
 		"type" : "post",
 		"data" : {
-			"action" : "searchuserid"
+			"action" : "searchuserid",
 		},
 		"dataType" : "" +
 				"",

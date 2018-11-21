@@ -44,7 +44,7 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcumb-content text-center">
-						<h2>Mes ev&eacutenements</h2>
+						<h2>Mes evénements</h2>
 					</div>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 	<!-- ##### Blog Wrapper Start ##### -->
 		<div class="container">
 			<button style='margin-bottom: 20px;' class='button'
-				onclick='afficher_form()'> + Ev&eacutenement</button>
+				onclick='afficher_form()'>+ evenement</button>
 			<form id="new_event" action="event" method="POST"
 				enctype="multipart/form-data"
 				style="display: none; margin-bottom: 20px;">
@@ -288,7 +288,7 @@
 		<!-- jQuery (Necessary for All JavaScript Plugins) -->
 
 		<script src="../js/jquery/jquery-2.2.4.min.js"></script>
-<script src="../js/plugins/sweetalert2.all.min.js" type="text/javascript"></script>
+
 		<!-- Popper js -->
 		<script src="../js/popper.min.js"></script>
 		<!-- Bootstrap js -->
@@ -298,4 +298,3 @@
 		<!-- Active js -->
 		<script src="../js/active.js"></script>
 		<script src="../js/myevents.js"></script>
-
