@@ -1,15 +1,13 @@
 $( document ).ready(function() {
-     setTimeout(function(){
-							
-	setCount();
-		}, 2000);
+				
+	displayAllEvents();
 	
 });
 /**
  * **************recuperer et afficher toute les evenements de la
  * base****************
  */
-function setCount(){
+function displayAllEvents(){
 $.ajax({
 		
 		"url" : "event",
