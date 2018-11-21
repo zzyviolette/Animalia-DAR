@@ -126,6 +126,40 @@ public class AnnonceDao {
 		q.executeUpdate();
 		session.close();
 	}
+	
+	
+	public  List<Object> deleteEventAndRefresh(Long id,String email) {
+
+		/**********************supprimer une annonce ***************************/
+		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
+	
+		//delete	
+		Annonce a = (Annonce) session.createQuery("from Annonce as a where a.id = :annonce")
+				.setParameter("annonce", id).uniqueResult();
+		
+		List<ACommentaire> comments = a.getComments();
+		CommentaireDao c=new CommentaireDao();
+		int i;
+		for (i = 0; i < comments.size(); i++) {
+			//comments.remove(i);
+			c.delete_commentaire(comments.get(i).getId());
+		}
+		Query q = session.createQuery("delete from Annonce as p where p.id= :id ");
+		q.setParameter("id", id);
+		q.executeUpdate();
+		
+		//search
+		Query q2 = session.createQuery(
+				"from Utilisateur user JOIN user.annonces an where user.email =:email order by an.date desc")
+				.setParameter("email", email);
+		List<Object> list = q2.list();
+		
+		transaction.commit();
+		session.close();
+		return list;
+	}
+	
 
 	public List<Object> displayAnnonces() {
 
@@ -253,3 +287,4 @@ public List<Object> notification(String email){
 
 
 }
+
