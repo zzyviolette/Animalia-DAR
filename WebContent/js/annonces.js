@@ -1,6 +1,8 @@
 $( document ).ready(function() {
-	
+	setTimeout(function(){
+							
 	setCount();
+		}, 2000);
 	 
 	
 });
