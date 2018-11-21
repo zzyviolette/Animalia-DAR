@@ -1,5 +1,9 @@
 $( document ).ready(function() {
-	$.ajax({
+	displayAnnonces();
+});
+
+function displayAnnonces(){
+		$.ajax({
 		
 		"url" : "annonce",
 		"type" : "post",
@@ -10,8 +14,8 @@ $( document ).ready(function() {
 			latest_posts(annonces);
 				}
 
-	});	
-});
+	}); 
+}
 /***************************affichage de date**************************/
 function jour(date){
 	var moonLanding = new Date(date);
@@ -335,10 +339,10 @@ function supprimer(id) {
 					"id" : id,
 					"action" : "supprimer"
 				},
-			"dataType" : "json",
-		    "success" : function( annonces, textStatus, jqXHR) {
-			  afficher_annonce(annonces);
-			  latest_posts(annonces);
+			"dataType" : "",
+		    "success" : function() {
+			  	displayAnnonces();
+			 
 			    }
 			});
 			
