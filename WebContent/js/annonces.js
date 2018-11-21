@@ -254,14 +254,14 @@ function details_annonce(annonces,id){
 		          "Par <a href='#'>"+annonce[0].name+"</a>"+
 		        "</p>"+
 		        "<p>A "+annonce[1].location+" &nbsp;</p>"+
-		       "<p>"+nbcom+" comments</p>"+
+		       "<p>"+nbcom+" commentaires</p>"+
 		      "</div>"+
 		     " <p>"+annonce[1].content+"</p>"+
 
 		      " </div>"+
 		  "</div>"+
 		  "<div class='comment_area clearfix mt-70' id='comments'>"+
-		    "<h5 class='title'>Comments</h5>";
+		    "<h5 class='title'>Commentaires</h5>";
 
 		  
 		 b=" </div>"+
@@ -278,7 +278,7 @@ function details_annonce(annonces,id){
 		           " <textarea name='content_comment' id='message' required=''></textarea>"+
 		           " <span class='highlight'></span>"+
 		            "<span class='bar'></span>"+
-		            "<label>Comment</label>"+
+		            "<label>Commentaire</label>"+
 		          "</div>"+
 		       " </div>"+
 		        "<div class='col-12'>"+
