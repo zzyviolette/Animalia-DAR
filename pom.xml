@@ -63,7 +63,13 @@
 								<include>**/*.jar</include>
 							</includes>
 						</resource>
-	<resource>
+						<resource>
+							<directory>${project.basedir}/WebContent/js</directory>
+							<includes>
+								<include>**/*.js</include>
+							</includes>
+						</resource>
+	                                        <resource>
 							<directory>src/main/resources</directory>
 							<includes>
 								<include>**/*.xml</include>
