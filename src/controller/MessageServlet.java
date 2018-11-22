@@ -69,7 +69,7 @@ public class MessageServlet extends HttpServlet {
 
 		}
 		case "contact": {
-
+			response.setContentType("application/json;charset=UTF-8");
 			String content = request.getParameter("content");
 			HttpSession session = request.getSession();
 			Utilisateur user = (Utilisateur)session.getAttribute("currentUser");  
