@@ -216,7 +216,7 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
     "<li>"+//supprimer
     "<button class='button' style='float:right;' onclick='supprimer(&quot;"+annonce[1].id+"&quot;)'>Supprimer</button>"+
     "</li>"+
-    "<li><button class='button' style='float:right;' onclick='myBtn(&quot;"+annonce[1].id+"&quot;,&quot;"+annonce[1].title+"&quot;,&quot;"+annonce[1].content+"&quot;,&quot;"+annonce[1].location+"&quot;)'>Modifier</button></li>"+
+    "<li><button class='button' style='float:right;' onclick="+myBtn(annonce[1])+">Modifier</button></li>"+
     "<li><form  style='float:right;' action='annonce' method='post'>"+
     like+
     "<input type='hidden' name='id' value='"+annonce[1].id+"' />"+
