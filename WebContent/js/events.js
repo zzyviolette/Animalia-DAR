@@ -195,8 +195,7 @@ function getId(callback){
 		"data" : {
 			"action" : "searchuserid"
 		},
-		"dataType" : "" +
-				"",
+		"dataType" : "",
 		"success" : function(text) {
            id=text;
            console.log(id);
