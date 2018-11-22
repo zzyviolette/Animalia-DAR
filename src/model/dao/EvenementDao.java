@@ -58,6 +58,17 @@ public class EvenementDao {
 		transaction.commit();
 		session.close();
 	}
+	public List<Object> displayEventById(int id){
+		Session session = HibernateUtil.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query q = session.createQuery("from Evenement ev where ev.event_id =:id").setParameter("id", id);
+		List<Object> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+		
+		
+	}
 	public void deleteEvent(int id) {
 
 		/***************************Supprimer un evenement***********************************/
