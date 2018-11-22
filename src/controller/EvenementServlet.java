@@ -62,6 +62,18 @@ public class EvenementServlet extends HttpServlet {
 			break;
 
 		}
+		case "display_event":{
+			response.setContentType("application/json;charset=UTF-8");
+			List<Object> posts = event.displayEventById(Integer.parseInt(request.getParameter("id")));
+			JSONArray jsonArray = new JSONArray(posts);
+			String jsonStr = jsonArray.toString();
+			PrintWriter out = response.getWriter();
+			out.println(jsonStr);
+			
+			break;
+			
+			
+		}
 		/*************** Ajouter un evenement *****************/
 		case "add_event": {
 
