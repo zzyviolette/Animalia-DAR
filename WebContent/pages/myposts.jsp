@@ -75,7 +75,7 @@
 										<a  data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a >Sauvez les animaux qui sont notre espoir!</a>
+										<a >Sauvez les animaux qui sont notre éspoir!</a>
 									</h2>
 								</div>
 							</div>
@@ -93,8 +93,7 @@
 										<a  data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a >Les autres qui ne decoivent
-											jamais</a>
+										<a >Les êtres qui ne deçoivent jamais!</a>
 									</h2>
 								</div>
 							</div>
