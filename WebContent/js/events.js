@@ -13,7 +13,9 @@ $.ajax({
 		
 		"url" : "event",
 		"type" : "post",
-		"data" : $("#even"),
+		"data" : {
+		  "action" : 'display_all'
+		},,
 		"dataType" : "json",
 		"success" : function( annonces, textStatus, jqXHR) {
 			getId((data)=>{
