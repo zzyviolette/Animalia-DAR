@@ -49,12 +49,10 @@ public class EvenementDao {
 		Session session = HibernateUtil.openSession();
 		Transaction transaction = session.beginTransaction();
 		Evenement ev = (Evenement) session.load(Evenement.class, id_event);
-		transaction.commit();
 		ev.setDescription(content);
 		ev.setTitle(title);
 		ev.setLocation(location);
 		session.update(ev);
-
 		transaction.commit();
 		session.close();
 	}
