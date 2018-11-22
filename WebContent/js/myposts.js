@@ -216,7 +216,7 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
     "<li>"+//supprimer
     "<button class='button' style='float:right;' onclick='supprimer(&quot;"+annonce[1].id+"&quot;)'>Supprimer</button>"+
     "</li>"+
-    "<li><button class='button' style='float:right;' onclick="+myBtn(annonce[1])+">Modifier</button></li>"+
+    "<li><button class='button' style='float:right;' onclick='myBtn("+annonce[1].id+")'>Modifier</button></li>"+
     "<li><form  style='float:right;' action='annonce' method='post'>"+
     like+
     "<input type='hidden' name='id' value='"+annonce[1].id+"' />"+
@@ -429,20 +429,34 @@ function deja_favoris(id,annonces){
 }
 
 /***********************************popup modifier*****************************************/
-function myBtn(myannonce) {
-	console.log("coucocu ziiy"+myannonce.id);
+function myBtn(id_an) {
+	
 	var modal = document.getElementById('myModal');
 	var title = document.getElementById('pop_title');
 	var contenu = document.getElementById('pop_content');
 	var location = document.getElementById('pop_location');
 	var annonce = document.getElementById('id');
+$.ajax({
+		
+		"url" : "annonce",
+		"type" : "post",
+		 "data" :{
+			"action" : "display_annonce",
+			"id":id_an
+		},
+		"dataType" : "json",
+		"success" : function( annonces, textStatus, jqXHR) {
+			title.value=annonces[0][1].title;
+			annonce.value=annonces[0][1].id;
+			contenu.value=annonces[0][1].content;
+			location.value=annonces[0][1].location;
+			modal.style.display = "block";
+		}
 
+	});	
 
-	title.value=myannonce.title;
-	annonce.value=myannonce.id;
-	contenu.value=myannonce.content;
-	location.value=myannonce.location;
-	modal.style.display = "block";
+	
+	
 }
 var span = document.getElementsByClassName("close")[0];
 
