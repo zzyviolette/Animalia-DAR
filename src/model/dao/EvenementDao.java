@@ -1,170 +1,165 @@
-package model.dao;
+package controller;
 
-
-
-import java.time.LocalDate;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Set;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
+import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+
 import model.bo.Evenement;
-import model.bo.PhotoEvent;
 import model.bo.Utilisateur;
-import utils.HibernateUtil;
+import model.dao.EvenementDao;
 
-public class EvenementDao {
+/**
+ * Servlet implementation class EvenementServlet
+ */
+public class EvenementServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-	public void addEvent(String mail, String description, String title, String location, String date,byte[]image) {
+	public EvenementServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		/******************Ajouter une evenement*********************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		LocalDate d = LocalDate.now();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getWriter().append("Served at event: ").append(request.getContextPath());
+	}
 
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", mail).uniqueResult();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		Evenement event = new Evenement(description, title, location, usr, d);
-		usr.getEvenements().add(event);
-		if(image!=null) {
-			System.out.println("not null");
-		PhotoEvent photo=new PhotoEvent(image);
-		event.setPhoto(photo);
-		session.save(photo);
+		EvenementDao event = new EvenementDao();
+		HttpSession session = request.getSession();
+		Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
+		String email = user.getEmail();
+		String action = request.getParameter("action");
+		switch (action) {
+
+		/**************** modifier un evenemeent ******************/
+
+		case "update": {
+
+			int id = Integer.parseInt(request.getParameter("id"));
+			String title = request.getParameter("title");
+			String location = request.getParameter("location");
+			String content = request.getParameter("content");
+			event.updateEvent(id, content, title, location);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+			dispatcher.forward(request, response);
+			break;
+
 		}
-		
-		session.save(event);
-		transaction.commit();
-		session.close();
-		
-	}
-	
-	public void updateEvent(int id_event, String content, String title, String location) {
-
-		/************************Modifier un evenement************************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Evenement ev = (Evenement) session.load(Evenement.class, id_event);
-		ev.setDescription(content);
-		ev.setTitle(title);
-		ev.setLocation(location);
-		session.update(ev);
-		transaction.commit();
-		session.close();
-	}
-	public List<Object> displayEventById(int id){
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Query q = session.createQuery("from Evenement ev where ev.event_id =:id").setParameter("id", id);
-		List<Object> list = q.list();
-		transaction.commit();
-		session.close();
-		return list;
-		
-		
-	}
-	public void deleteEvent(int id) {
-
-		/***************************Supprimer un evenement***********************************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Query q = session.createQuery("delete from Evenement as p where p.event_id= :id ");
-		q.setParameter("id", id);
-		q.executeUpdate();
-		System.out.println("delete id : "+ id);
-		transaction.commit();
-		session.close();
-	}
-	
-
-	public List<Object> displayEvent() {
-		
-		/************************Afficher les evenements**************************************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER JOIN ev.photo LEFT OUTER JOIN ev.users_inter order by ev.event_id ");
-		List<Object> list = q.list();
-		transaction.commit();
-		session.close();
-		return list;
-
-	}
-	public List<Object> displayMyEvent(String email) {
-		
-		/***********************afficher mes evenements*****************************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", email).uniqueResult();
-		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER  JOIN ev.photo LEFT OUTER JOIN ev.users_inter where user.id=:usr order by ev.event_id").setParameter("usr", usr.getId());
-		
-		List<Object> list = q.list();
-		transaction.commit();
-		session.close();
-		return list;
-
-	}
-
-	public void intrested(int event, String email) {
-		
-		/*************************S'interesser a un evenement****************************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", email).uniqueResult();
-		Evenement e = (Evenement) session.createQuery("from Evenement as e where e.event_id = :event")
-				.setParameter("event", event).uniqueResult();
-		usr.getEvents_inter().add(e);
-		e.getUsers_inter().add(usr);
-		session.update(usr);
-		session.update(e);
-		transaction.commit();
-		session.close();
-
-	}
-	
-	public void notIntrested(int event,String email) {
-		
-		/********************************desinteress� d'un evenement**********************************/
-		
-		Session session = HibernateUtil.openSession();
-		Transaction transaction = session.beginTransaction();
-		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
-				.setParameter("email", email).uniqueResult();
-		Evenement e = (Evenement) session.createQuery("from Evenement as e where e.event_id = :event")
-				.setParameter("event", event).uniqueResult();
-		List<Evenement> ev=usr.getEvents_inter();
-		int i;
-		for( i=0;i<ev.size();i++)
-		{
-			if(ev.get(i).equals(e)) {
-				break;
-			}
+		case "display_event":{
+			response.setContentType("application/json;charset=UTF-8");
+			List<Object> posts = event.displayEventById(Integer.parseInt(request.getParameter("id")));
+			JSONArray jsonArray = new JSONArray(posts);
+			String jsonStr = jsonArray.toString();
+			PrintWriter out = response.getWriter();
+			out.println(jsonStr);
+			
+			break;
+			
 			
 		}
-		ev.remove(i);		
-		Set<Utilisateur>users=e.getUsers_inter();
-		users.remove(usr);
-		session.update(usr);
-		session.update(e);
-		transaction.commit();
-		session.close();
+		/*************** Ajouter un evenement *****************/
+		case "add_event": {
+
+			String description = request.getParameter("description");
+			String title = request.getParameter("title");
+			String location = request.getParameter("location");
+			String date = request.getParameter("date");
+			byte[] bytes = null;
+
+			Part filePart = request.getPart("file");
+			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
+			if (!fileName.equals("")) {
+				InputStream fileContent = filePart.getInputStream();
+				bytes = IOUtils.toByteArray(fileContent);
+			}
+			event.addEvent(email, description, title, location, date, bytes);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("myevents.jsp");
+			dispatcher.forward(request, response);
+
+			break;
+
+		}
+		/*********ne plus participer a un event*********/
+		case "notIntrested": {
+
+			int e = Integer.parseInt(request.getParameter("id"));
+			event.notIntrested(e, email);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("events.jsp");
+                        dispatcher.forward(request, response);
+			break;
+			
+		}
+		/************** afficher toute les evenements***************/
+		case "display_all": {
+			
 		
+			response.setContentType("application/json;charset=UTF-8");
+			List<Object> posts = event.displayEvent();
+			JSONArray jsonArray = new JSONArray(posts);
+			String jsonStr = jsonArray.toString();
+			PrintWriter out = response.getWriter();
+			out.println(jsonStr);
+			break;
+
+		}
+		/************afficher mes annonces****************/
+		case "display_mine": {
+			
+			response.setContentType("application/json;charset=UTF-8");
+			System.out.println("email"+email);
+			List<Object> posts = event.displayMyEvent(email);
+			System.out.println("size"+posts.size());
+			JSONArray jsonArray = new JSONArray(posts);
+			String jsonStr = jsonArray.toString();
+			PrintWriter out = response.getWriter();
+			out.println(jsonStr);
+			break;
+			
+		}
+		/******************supprimer un evenement*********************/
+		case "supprimer": {
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			System.out.println("supprimer id"+id);
+	        event.deleteEvent(id);	
+			break;
+
+		}
+		/*********************s'interesser a un event**************************/
+		case "intrested": {
+
+			int e = Integer.parseInt(request.getParameter("id"));
+			event.intrested(e, email);
+	                RequestDispatcher dispatcher = request.getRequestDispatcher("events.jsp");
+			dispatcher.forward(request, response);
+
+			break;
+			
+		}
 		
+
+		default: {
+			System.out.println("ERREUR evenementServlet");
+		}
+		}
 	}
 
 }
-
-
-
-
-
 
