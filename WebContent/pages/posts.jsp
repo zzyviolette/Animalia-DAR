@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -72,7 +73,7 @@
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
 										<a >Sauvez les animaux qui sont
-											notre espoir!</a>
+											notre éspoir!</a>
 									</h2>
 								</div>
 							</div>
@@ -90,7 +91,7 @@
 										<a  data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a >Les autres qui ne decoivent
+										<a >Les êtres qui ne deçoivent
 											jamais</a>
 									</h2>
 								</div>
