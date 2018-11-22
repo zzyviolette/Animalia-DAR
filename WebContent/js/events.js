@@ -15,7 +15,7 @@ $.ajax({
 		"type" : "post",
 		"data" : {
 		  "action" : 'display_all'
-		},,
+		},
 		"dataType" : "json",
 		"success" : function( annonces, textStatus, jqXHR) {
 			getId((data)=>{
