@@ -46,7 +46,6 @@ public class AnnonceServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
 		String email = user.getEmail();
-		System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiii");
 		AnnonceDao annonce = new AnnonceDao();
 		String action = request.getParameter("action");
 		System.out.println(action + "test");
@@ -140,7 +139,7 @@ public class AnnonceServlet extends HttpServlet {
 		}
 		/*************filtrer les annonces par categorie**********************/
 		case "filtrer": {
-
+			response.setContentType("application/json;charset=UTF-8");
 			String categorie = request.getParameter("categorie");
 			System.out.println("coucou" + categorie);
 			List<Object> posts = annonce.filtrer_annonce(categorie);
@@ -154,7 +153,7 @@ public class AnnonceServlet extends HttpServlet {
 		}
 		/**************************afficher une annonce*********************/
 		case "display_annonce": {
-			
+			response.setContentType("application/json;charset=UTF-8");
 			long id = Long.parseLong(request.getParameter("id"));
 			List<Object> posts = annonce.afficher_annonce(id);
 			JSONArray jsonArray = new JSONArray(posts);
@@ -190,9 +189,7 @@ public class AnnonceServlet extends HttpServlet {
 			
 		}
 		case "notification":{
-			System.out.println("notifi servlet >>>>>>>>>>>>>>>>>>>>>>>");
 			response.setContentType("application/json;charset=UTF-8");
-			System.out.println("email+_+______________"+email);
 			List<Object> posts = annonce.notification(email);
 			annonce.updateCommentState(email);
 
