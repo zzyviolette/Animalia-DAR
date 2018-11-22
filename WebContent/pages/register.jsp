@@ -37,9 +37,9 @@
 
 <body class="bg-dark">
 
-
-	<div class="container-contact100"
-	      style="background-image: url('../img/pet-login.jpg');background-size: 100%;"
+<div class="container-contact100"
+		style="background-image: url('../img/pet-login.jpg');">
+	
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" method="POST"
 				action="user">
