@@ -188,17 +188,16 @@ function nombre_participant(event,events,i){
 /****************current user id**************/
 function getId(callback){
 	var id;
-	
+	console.log("enter getid");
 	$.ajax({
 		"url" : "annonce",
 		"type" : "post",
 		"data" : {
 			"action" : "searchuserid"
 		},
-		"dataType" : "",
-		"success" : function(text) {
-           id=text;
-           console.log(id);
+		"dataType" : "text",
+		"success" : function(id) {
+           console.log("id"+id);
            callback(id);
           
 			} 
