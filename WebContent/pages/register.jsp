@@ -35,11 +35,11 @@
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 
+<body class="bg-dark" style="background-image: url('../img/pet-login.jpg');background-size: 100%;">
 
-<body class="bg-dark">
 
 	<div class="container-contact100"
-		style="background-image: url('../img/animal_reg.jpg');">
+	     
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" method="POST"
 				action="user">
