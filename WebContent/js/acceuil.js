@@ -37,8 +37,8 @@ $(document).ready(function() {
 			})
 
 			swalWithBootstrapButtons({
-			  title: 'Vous etes Sure? ',
-			  text: "de se déconncter",
+			  title: 'Vous &ecirctes sur? ',
+			  text: "",
 			  type: 'warning',
 			  showCancelButton: true,
 			  confirmButtonText: 'Oui, Déconnecter!',
