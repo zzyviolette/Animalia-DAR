@@ -92,7 +92,7 @@
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
 										<a >Les êtres qui ne deçoivent
-											jamais</a>
+											jamais!</a>
 									</h2>
 								</div>
 							</div>
