@@ -183,7 +183,7 @@
 									<input type="search" name="search" placeholder="Rechercher">
 
 								</form>
-								<button style ='border:none;color:white;margin:10px;background-color:black;padding:5px;'onclick="rechercher()">Rechercher</button>
+								<button class='button' onclick="rechercher()">Rechercher</button>
 								
 							</div>
 
