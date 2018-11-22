@@ -17,12 +17,11 @@ $.ajax({
 		  "action" : 'display_all'
 		},
 		"dataType" : "json",
-		"success" : function( annonces, textStatus, jqXHR) {
+		"success" : function( events, textStatus, jqXHR) {
+			console.log("ok");
 			getId((data)=>{
 				console.log(data);
-				id =data;
-				console.log(id);
-				display_events(annonces,id);
+				display_events(events,data);
 			});
 		}
 	});	
