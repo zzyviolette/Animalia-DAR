@@ -104,7 +104,7 @@ public class EvenementServlet extends HttpServlet {
 			
 		}
 		/************** afficher toute les evenements***************/
-		case "display_all": {
+		case "display": {
 			
 		
 			response.setContentType("application/json;charset=UTF-8");
