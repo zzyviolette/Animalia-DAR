@@ -429,8 +429,8 @@ function deja_favoris(id,annonces){
 }
 
 /***********************************popup modifier*****************************************/
-function myBtn(id,titre,content,adresse) {
-	console.log("mok a weld lkelb");
+function myBtn(myannonce) {
+	console.log("coucocu ziiy"+myannonce.id);
 	var modal = document.getElementById('myModal');
 	var title = document.getElementById('pop_title');
 	var contenu = document.getElementById('pop_content');
@@ -438,13 +438,12 @@ function myBtn(id,titre,content,adresse) {
 	var annonce = document.getElementById('id');
 
 
-	title.value=titre;
-	annonce.value=id;
-	contenu.value=content;
-	location.value=adresse;
+	title.value=myannonce.title;
+	annonce.value=myannonce.id;
+	contenu.value=myannonce.content;
+	location.value=myannonce.location;
 	modal.style.display = "block";
 }
-
 var span = document.getElementsByClassName("close")[0];
 
 function fermer() {
