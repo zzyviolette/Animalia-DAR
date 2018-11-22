@@ -214,7 +214,7 @@
 		src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"
 		type="text/javascript"></script>
 	<!-- END CORE PLUGINS -->
-	<script src="http://maps.google.com/maps/api/js?sensor=true"
+	<script src="https://maps.google.com/maps/api/js?sensor=true"
 		type="text/javascript"></script>
 	<script src="../assets/global/scripts/metronic.js"
 		type="text/javascript"></script>
