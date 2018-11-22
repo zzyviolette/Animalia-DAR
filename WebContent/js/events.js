@@ -1,4 +1,5 @@
-$( document ).ready(function() {		
+$( document ).ready(function() {	
+	console.log("enter event");
 	displayAllEvents();
 	
 });
@@ -7,6 +8,7 @@ $( document ).ready(function() {
  * base****************
  */
 function displayAllEvents(){
+	     console.log("enter display all");
 $.ajax({
 		
 		"url" : "event",
@@ -15,7 +17,6 @@ $.ajax({
 		"dataType" : "json",
 		"success" : function( annonces, textStatus, jqXHR) {
 			getId((data)=>{
-				
 				console.log(data);
 				id =data;
 				console.log(id);
