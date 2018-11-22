@@ -14,15 +14,15 @@ $.ajax({
 		"url" : "event",
 		"type" : "post",
 		"data" : {
-		  "action" : 'display_all'
+			"action" : "display_all"
 		},
 		"dataType" : "json",
-		"success" : function( events, textStatus, jqXHR) {
+		"success" : function( events) {
 			console.log("ok");
-			getId((data)=>{
-				console.log(data);
-				display_events(events,data);
-			});
+// 			getId((data)=>{
+// 				console.log(data);
+// 				display_events(events,data);
+// 			});
 		}
 	});	
 }
