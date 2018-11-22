@@ -32,15 +32,12 @@ public class EvenementServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().append("Served at event: ").append(request.getContextPath());
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		EvenementDao event = new EvenementDao();
 		HttpSession session = request.getSession();
 		Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
@@ -159,6 +156,7 @@ public class EvenementServlet extends HttpServlet {
 			System.out.println("ERREUR evenementServlet");
 		}
 		}
+
 	}
 
 }
