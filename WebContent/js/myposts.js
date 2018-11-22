@@ -322,7 +322,7 @@ function supprimer(id) {
 
 		swalWithBootstrapButtons({
 		  postion : 'bottom-start',	
-		  title: 'Vous &ecirctes sur de le supprimer?',
+		  title: 'Vous &ecirctes sur?',
 		  text: "",
 		  type: 'warning',
 		  showCancelButton: true,
