@@ -99,8 +99,8 @@ var interesse="<a><span><form action='event' method='post'>"+
 	        "<p> A "+event[1].location+"</p>"+
 	        "<p>&nbsp; &nbsp; &nbsp;"+participant+" participants</p>"+
 	        "</div>"+
-	        "<button class='button' onclick='myBtn(&quot;"+event[1].event_id+"&quot;,&quot;"+event[1].title+"&quot;,&quot;"+event[1].description+"&quot;,&quot;"+event[1].location+"&quot;)'>Modifier</button>"+
-			"<button class='button' onclick='supprimer(&quot;"+event[1].event_id+"&quot;)'>Supprimer</button>"+
+		"<button class='button' style='float:right;' onclick="+myBtn(event[1])+">Modifier</button>"+	
+	    "<button class='button' onclick='supprimer(&quot;"+event[1].event_id+"&quot;)'>Supprimer</button>"+
 	 " </div>"+
 	"</div>";
 	    var objTo = document.getElementById('events');
@@ -228,20 +228,21 @@ function jour(date){
 //			
 //		}
 /** *************popup window de modification**************** */
-function myBtn(id,titre,content,adresse) {
-				var modal = document.getElementById('myModal');
-				var title = document.getElementById('pop_title');
-				var contenu = document.getElementById('pop_content');
-				var location = document.getElementById('pop_location');
-				var annonce = document.getElementById('id');
+function myBtn(myannonce) {
+
+	var modal = document.getElementById('myModal');
+	var title = document.getElementById('pop_title');
+	var contenu = document.getElementById('pop_content');
+	var location = document.getElementById('pop_location');
+	var annonce = document.getElementById('id');
 
 
-				title.value=titre;
-				annonce.value=id;
-				contenu.value=content;
-				location.value=adresse;
-				modal.style.display = "block";
-			}
+	title.value=myannonce.title;
+	annonce.value=myannonce.event_id;
+	contenu.value=myannonce.description;
+	location.value=myannonce.location;
+	modal.style.display = "block";
+}
 			
 function fermer() {
 				var modal = document.getElementById('myModal');
