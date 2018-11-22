@@ -99,7 +99,7 @@ var interesse="<a><span><form action='event' method='post'>"+
 	        "<p> A "+event[1].location+"</p>"+
 	        "<p>&nbsp; &nbsp; &nbsp;"+participant+" participants</p>"+
 	        "</div>"+
-		"<button class='button' style='float:right;' onclick="+myBtn(event[1])+">Modifier</button>"+	
+	        "<button class='button' onclick='myBtn("+event[1].event_id+")'>Modifier</button>"+
 	    "<button class='button' onclick='supprimer(&quot;"+event[1].event_id+"&quot;)'>Supprimer</button>"+
 	 " </div>"+
 	"</div>";
@@ -228,21 +228,35 @@ function jour(date){
 //			
 //		}
 /** *************popup window de modification**************** */
-function myBtn(myannonce) {
-
+function myBtn(id_ev) {
+	
 	var modal = document.getElementById('myModal');
 	var title = document.getElementById('pop_title');
 	var contenu = document.getElementById('pop_content');
 	var location = document.getElementById('pop_location');
 	var annonce = document.getElementById('id');
+$.ajax({
+		
+		"url" : "event",
+		"type" : "post",
+		 "data" :{
+			"action" : "display_event",
+			"id":id_ev
+		},
+		"dataType" : "json",
+		"success" : function( annonces, textStatus, jqXHR) {
+			title.value=annonces[0].title;
+			annonce.value=annonces[0].event_id;
+			contenu.value=annonces[0].description;
+			location.value=annonces[0].location;
+			modal.style.display = "block";
+		}
 
+	});	
 
-	title.value=myannonce.title;
-	annonce.value=myannonce.event_id;
-	contenu.value=myannonce.description;
-	location.value=myannonce.location;
-	modal.style.display = "block";
-}
+	
+
+			}
 			
 function fermer() {
 				var modal = document.getElementById('myModal');
