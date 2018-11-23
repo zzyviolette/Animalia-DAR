@@ -154,7 +154,7 @@ function clickDelete(span) {
 
 		swalWithBootstrapButtons({
 		  title: 'Vous &ecirctes sur?',
-		  text: "de le supprimer?",
+		  text: "",
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonText: 'Oui,Supprimer!',

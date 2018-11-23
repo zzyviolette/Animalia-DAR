@@ -216,7 +216,7 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
     "<li>"+//supprimer
     "<button class='button' style='float:right;' onclick='supprimer(&quot;"+annonce[1].id+"&quot;)'>Supprimer</button>"+
     "</li>"+
-    "<li><button class='button' style='float:right;' onclick='myBtn(&quot;"+annonce[1].id+"&quot;,&quot;"+annonce[1].title+"&quot;,&quot;"+annonce[1].content+"&quot;,&quot;"+annonce[1].location+"&quot;)'>Modifier</button></li>"+
+    "<li><button class='button' style='float:right;' onclick='myBtn("+annonce[1].id+")'>Modifier</button></li>"+
     "<li><form  style='float:right;' action='annonce' method='post'>"+
     like+
     "<input type='hidden' name='id' value='"+annonce[1].id+"' />"+
@@ -228,7 +228,7 @@ var an="<div class='single-blog-area blog-style-2 mb-50'>"+
       "</h4>"+
       "<div class='post-meta mb-50'>"+
         "<p>"+
-          "By <a href='#'>"+annonce[0].name+"</a>"+
+          "PAR <a href='#'>"+annonce[0].name+"</a>"+
         "</p>"+
         "<p>A "+annonce[1].location+" &nbsp;</p>"+
        "<p>"+annonces.length+" commentaires</p>"+
@@ -322,7 +322,7 @@ function supprimer(id) {
 
 		swalWithBootstrapButtons({
 		  postion : 'bottom-start',	
-		  title: 'Vous &ecirctes sur de le supprimer?',
+		  title: 'Vous &ecirctes sur?',
 		  text: "",
 		  type: 'warning',
 		  showCancelButton: true,
@@ -429,22 +429,35 @@ function deja_favoris(id,annonces){
 }
 
 /***********************************popup modifier*****************************************/
-function myBtn(id,titre,content,adresse) {
-	console.log("mok a weld lkelb");
+function myBtn(id_an) {
+	
 	var modal = document.getElementById('myModal');
 	var title = document.getElementById('pop_title');
 	var contenu = document.getElementById('pop_content');
 	var location = document.getElementById('pop_location');
 	var annonce = document.getElementById('id');
+$.ajax({
+		
+		"url" : "annonce",
+		"type" : "post",
+		 "data" :{
+			"action" : "display_annonce",
+			"id":id_an
+		},
+		"dataType" : "json",
+		"success" : function( annonces, textStatus, jqXHR) {
+			title.value=annonces[0][1].title;
+			annonce.value=annonces[0][1].id;
+			contenu.value=annonces[0][1].content;
+			location.value=annonces[0][1].location;
+			modal.style.display = "block";
+		}
 
+	});	
 
-	title.value=titre;
-	annonce.value=id;
-	contenu.value=content;
-	location.value=adresse;
-	modal.style.display = "block";
+	
+	
 }
-
 var span = document.getElementsByClassName("close")[0];
 
 function fermer() {

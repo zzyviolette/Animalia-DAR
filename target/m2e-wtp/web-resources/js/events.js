@@ -1,5 +1,5 @@
-$( document ).ready(function() {
-				
+$( document ).ready(function() {	
+	console.log("enter event");
 	displayAllEvents();
 	
 });
@@ -8,19 +8,20 @@ $( document ).ready(function() {
  * base****************
  */
 function displayAllEvents(){
+	     console.log("enter display all");
 $.ajax({
 		
 		"url" : "event",
 		"type" : "post",
-		"data" : $("#even"),
+		"data" : {
+		  "action" : 'display_all'
+		},
 		"dataType" : "json",
-		"success" : function( annonces, textStatus, jqXHR) {
+		"success" : function( events, textStatus, jqXHR) {
+			console.log("ok");
 			getId((data)=>{
-				
 				console.log(data);
-				id =data;
-				console.log(id);
-				display_events(annonces,id);
+				display_events(events,data);
 			});
 		}
 	});	
@@ -186,18 +187,16 @@ function nombre_participant(event,events,i){
 /****************current user id**************/
 function getId(callback){
 	var id;
-	
+	console.log("enter getid");
 	$.ajax({
 		"url" : "annonce",
 		"type" : "post",
 		"data" : {
 			"action" : "searchuserid"
 		},
-		"dataType" : "" +
-				"",
-		"success" : function(text) {
-           id=text;
-           console.log(id);
+		"dataType" : "text",
+		"success" : function(id) {
+           console.log("id"+id);
            callback(id);
           
 			} 

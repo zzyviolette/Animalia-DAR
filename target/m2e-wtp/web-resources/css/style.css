@@ -72,6 +72,11 @@ p {
 	padding: 5px;
 	border-radius: 10px;
 	width:120px;
+	cursor: pointer;
+}
+.button:hover{
+	
+		background-color: rgb(53,118,190);
 }
 
 a {

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark" style="background-image: url('../img/pet-login.jpg');background-size: 100%;">
 
 	<div class="container">
 		<div class="card card-login mx-auto mt-5">

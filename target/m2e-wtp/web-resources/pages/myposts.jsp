@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -53,10 +54,10 @@
 							<div class="col-12">
 								<div class="slide-content text-center">
 									<div class="post-tag">
-										<a href="#" data-animation="fadeInUp">Animalia</a>
+										<a  data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Partagez votre amour avec nous !</a>
+										<a >Partagez votre amour avec nous !</a>
 									</h2>
 								</div>
 							</div>
@@ -71,10 +72,10 @@
 							<div class="col-12">
 								<div class="slide-content text-center">
 									<div class="post-tag">
-										<a href="#" data-animation="fadeInUp">Animalia</a>
+										<a  data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Sauvez les animaux qui sont notre espoir!</a>
+										<a >Sauvez les animaux qui sont notre éspoir!</a>
 									</h2>
 								</div>
 							</div>
@@ -89,11 +90,10 @@
 							<div class="col-12">
 								<div class="slide-content text-center">
 									<div class="post-tag">
-										<a href="#" data-animation="fadeInUp">Animalia</a>
+										<a  data-animation="fadeInUp">Animalia</a>
 									</div>
 									<h2 data-animation="fadeInUp" data-delay="250ms">
-										<a href="single-post.html">Les autres qui ne decoivent
-											jamais</a>
+										<a >Les êtres qui ne deçoivent jamais!</a>
 									</h2>
 								</div>
 							</div>
@@ -182,7 +182,7 @@
 									<input type="search" name="search" placeholder="Rechercher">
 
 								</form>
-								<button style ='border:none;color:white;margin:10px;background-color:black;padding:5px;'onclick="rechercher()">Rechercher</button>
+								<button class='button' onclick="rechercher()">Rechercher</button>
 								
 							</div>
 

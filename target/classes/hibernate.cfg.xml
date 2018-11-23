@@ -3,15 +3,16 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dar</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">123456</property>
-		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">update</property>
+			<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+			<property name="hibernate.connection.url">jdbc:mysql://eu-cdbr-west-02.cleardb.net:3306/heroku_d4be27d3a2bb324</property>
+			<property name="hibernate.connection.username">b55d1bdf40e260</property>
+			<property name="hibernate.connection.password">dda7dfaf</property>
+
 		<property name="connection.autoReconnect">true</property> 
         <property name="connection.autoReconnectForPools">true</property> 
         <property name="connection.is-connection-validation-required">true</property> 
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
 		<mapping class="model.bo.Utilisateur" />
 		<mapping class="model.bo.Comment" />
 		<mapping class="model.bo.Annonce" />

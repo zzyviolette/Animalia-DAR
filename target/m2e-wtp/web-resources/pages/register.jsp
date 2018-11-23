@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,11 +35,11 @@
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 
-
 <body class="bg-dark">
 
-	<div class="container-contact100"
-		style="background-image: url('../img/animal_reg.jpg');">
+<div class="container-contact100"
+		style="background-image: url('../img/pet-login.jpg');">
+	
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" method="POST"
 				action="user">

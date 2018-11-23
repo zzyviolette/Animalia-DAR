@@ -16,7 +16,7 @@
 <meta content="" name="author" />
 
 <link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
 	rel="stylesheet" type="text/css" />
 <link
 	href="../assets/global/plugins/font-awesome/css/font-awesome.min.css"
@@ -214,7 +214,7 @@
 		src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"
 		type="text/javascript"></script>
 	<!-- END CORE PLUGINS -->
-	<script src="http://maps.google.com/maps/api/js?sensor=true"
+	<script src="https://maps.google.com/maps/api/js?sensor=true"
 		type="text/javascript"></script>
 	<script src="../assets/global/scripts/metronic.js"
 		type="text/javascript"></script>

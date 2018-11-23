@@ -99,8 +99,8 @@ var interesse="<a><span><form action='event' method='post'>"+
 	        "<p> A "+event[1].location+"</p>"+
 	        "<p>&nbsp; &nbsp; &nbsp;"+participant+" participants</p>"+
 	        "</div>"+
-	        "<button class='button' onclick='myBtn(&quot;"+event[1].event_id+"&quot;,&quot;"+event[1].title+"&quot;,&quot;"+event[1].description+"&quot;,&quot;"+event[1].location+"&quot;)'>Modifier</button>"+
-			"<button class='button' onclick='supprimer(&quot;"+event[1].event_id+"&quot;)'>Supprimer</button>"+
+	        "<button class='button' onclick='myBtn("+event[1].event_id+")'>Modifier</button>"+
+	    "<button class='button' onclick='supprimer(&quot;"+event[1].event_id+"&quot;)'>Supprimer</button>"+
 	 " </div>"+
 	"</div>";
 	    var objTo = document.getElementById('events');
@@ -126,7 +126,7 @@ function supprimer(id) {
 
 		swalWithBootstrapButtons({
 		  postion : 'bottom-start',	
-		  title: 'Vous &ecirctes sur de le supprimer?',
+		  title: 'Vous &ecirctes sur?',
 		  text: "",
 		  type: 'warning',
 		  showCancelButton: true,
@@ -228,19 +228,34 @@ function jour(date){
 //			
 //		}
 /** *************popup window de modification**************** */
-function myBtn(id,titre,content,adresse) {
-				var modal = document.getElementById('myModal');
-				var title = document.getElementById('pop_title');
-				var contenu = document.getElementById('pop_content');
-				var location = document.getElementById('pop_location');
-				var annonce = document.getElementById('id');
+function myBtn(id_ev) {
+	
+	var modal = document.getElementById('myModal');
+	var title = document.getElementById('pop_title');
+	var contenu = document.getElementById('pop_content');
+	var location = document.getElementById('pop_location');
+	var annonce = document.getElementById('id');
+$.ajax({
+		
+		"url" : "event",
+		"type" : "post",
+		 "data" :{
+			"action" : "display_event",
+			"id":id_ev
+		},
+		"dataType" : "json",
+		"success" : function( annonces, textStatus, jqXHR) {
+			title.value=annonces[0].title;
+			annonce.value=annonces[0].event_id;
+			contenu.value=annonces[0].description;
+			location.value=annonces[0].location;
+			modal.style.display = "block";
+		}
 
+	});	
 
-				title.value=titre;
-				annonce.value=id;
-				contenu.value=content;
-				location.value=adresse;
-				modal.style.display = "block";
+	
+
 			}
 			
 function fermer() {
