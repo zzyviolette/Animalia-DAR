@@ -14,7 +14,7 @@ $.ajax({
 		"url" : "event",
 		"type" : "post",
 		"data" : {
-		  "action" : 'display_all'
+		  "action" : 'display_mine'
 		},
 		"dataType" : "json",
 		"success" : function( events, textStatus, jqXHR) {
