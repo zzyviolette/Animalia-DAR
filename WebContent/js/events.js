@@ -14,7 +14,7 @@ $.ajax({
 		"url" : "event",
 		"type" : "post",
 		"data" : {
-			"action" : "display"
+			"action" : "display_all"
 		},
 		"dataType" : "json",
 		"success" : function( events) {
