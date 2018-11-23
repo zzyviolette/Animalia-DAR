@@ -32,12 +32,15 @@ public class EvenementServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
-	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getWriter().append("Served at event: ").append(request.getContextPath());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		EvenementDao event = new EvenementDao();
 		HttpSession session = request.getSession();
 		Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
@@ -104,9 +107,10 @@ public class EvenementServlet extends HttpServlet {
 			
 		}
 		/************** afficher toute les evenements***************/
-		case "display": {
+		case "display_all": {
 			
-		response.setContentType("application/json;charset=UTF-8");
+		
+			response.setContentType("application/json;charset=UTF-8");
 			List<Object> posts = event.displayEvent();
 			JSONArray jsonArray = new JSONArray(posts);
 			String jsonStr = jsonArray.toString();
@@ -155,7 +159,6 @@ public class EvenementServlet extends HttpServlet {
 			System.out.println("ERREUR evenementServlet");
 		}
 		}
-
 	}
 
 }
