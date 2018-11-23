@@ -88,7 +88,7 @@ public class EvenementDao {
 		
 		Session session = HibernateUtil.openSession();
 		Transaction transaction = session.beginTransaction();
-		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER JOIN ev.photo LEFT OUTER JOIN ev.users_inter order by ev.event_id ");
+		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER JOIN ev.photo LEFT OUTER JOIN ev.users_inter order by ev.event_id desc ");
 		List<Object> list = q.list();
 		transaction.commit();
 		session.close();
@@ -103,7 +103,7 @@ public class EvenementDao {
 		Transaction transaction = session.beginTransaction();
 		Utilisateur usr = (Utilisateur) session.createQuery("from Utilisateur as user where user.email = :email")
 				.setParameter("email", email).uniqueResult();
-		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER  JOIN ev.photo LEFT OUTER JOIN ev.users_inter where user.id=:usr order by ev.event_id").setParameter("usr", usr.getId());
+		Query q = session.createQuery("from Utilisateur user JOIN user.evenements ev LEFT OUTER  JOIN ev.photo LEFT OUTER JOIN ev.users_inter where user.id=:usr order by ev.event_id desc ").setParameter("usr", usr.getId());
 		
 		List<Object> list = q.list();
 		transaction.commit();
