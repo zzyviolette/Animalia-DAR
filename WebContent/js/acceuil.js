@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	setCount();
 
 	window.setInterval(function(){setCount();},30000);
 
