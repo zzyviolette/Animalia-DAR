@@ -111,7 +111,7 @@ public class EvenementServlet extends HttpServlet {
 			
 		
 			response.setContentType("application/json;charset=UTF-8");
-			List<Object> posts = event.displayEvent();
+			List<Object> posts = event.displayMyEvent(email);
 			JSONArray jsonArray = new JSONArray(posts);
 			String jsonStr = jsonArray.toString();
 			PrintWriter out = response.getWriter();
