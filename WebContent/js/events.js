@@ -14,10 +14,10 @@ $.ajax({
 		"url" : "event",
 		"type" : "post",
 		"data" : {
-			"action" : "display_all"
+		  "action" : 'display_all'
 		},
 		"dataType" : "json",
-		"success" : function( events) {
+		"success" : function( events, textStatus, jqXHR) {
 			console.log("ok");
 			getId((data)=>{
 				console.log(data);
